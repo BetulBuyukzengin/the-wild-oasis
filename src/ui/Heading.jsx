@@ -13,8 +13,8 @@ const Heading = styled.h1`
       font-weight: 600;
     `} /* font-size: 30px;
   font-weight: 600;
-  color: #c5c594;
-  ${test} ${deneme} */
+  color: #c5c594;*/
+  
 ${(props) =>
     props.as === "h2" &&
     css`

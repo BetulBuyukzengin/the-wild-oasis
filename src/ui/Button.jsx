@@ -1,4 +1,7 @@
+/* eslint-disable no-unused-vars */
 import styled, { css } from "styled-components";
+
+//! Flexible Components and Default Properties Usage in Styled Components
 
 const sizes = {
   small: css`
@@ -49,17 +52,15 @@ const variations = {
 };
 
 const Button = styled.button`
-  font-size: 1.4rem;
-  padding: 1.2rem 1.6rem;
-  font-weight: 500;
   border: none;
   border-radius: var(--border-radius-sm);
-  background-color: var(--color-brans-600);
-  color: var(--color-brand-50);
   box-shadow: var(--shadow-sm);
-  cursor: pointer;
-  &:hover {
-    background-color: var(--color-brand-700);
-  }
+  ${(props) => sizes[props.size]}
+  ${(props) => variations[props.variation]}
 `;
+//! Default value
+Button.defaultProps = {
+  variation: "primary",
+  size: "medium",
+};
 export default Button;

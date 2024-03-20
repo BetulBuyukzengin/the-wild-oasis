@@ -10,6 +10,7 @@ function Cabins() {
   useEffect(function () {
     getCabins().then((data) => console.log(data));
   }, []);
+
   const [showForm, setShowForm] = useState(false);
   return (
     <>

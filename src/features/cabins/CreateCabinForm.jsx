@@ -12,6 +12,9 @@ import FormRow from "../../ui/FormRow";
 function CreateCabinForm() {
   //! REACT HOOK FORM
   const { register, handleSubmit, reset, getValues, formState } = useForm();
+  console.log(getValues().regularPrice);
+  console.log(getValues().discount);
+
   const { errors } = formState;
 
   const queryClient = useQueryClient();
@@ -27,10 +30,12 @@ function CreateCabinForm() {
   });
 
   function onSubmit(data) {
-    // console.log(data);
-    mutate(data);
+    // mutate(data);
+    // for upload img
+    mutate({ ...data, image: data.image[0] });
   }
-  function onError() {
+  // eslint-disable-next-line no-unused-vars
+  function onError(errors) {
     // console.log(errors);
   }
   return (
@@ -47,28 +52,22 @@ function CreateCabinForm() {
         {errors?.name?.message && <Error>{errors.name.message}</Error>}
       </FormRow> */}
 
-      <FormRow
-        label="Cabin name"
-        error={errors?.name?.message}
-        disabled={isCreating}
-      >
+      <FormRow label="Cabin name" error={errors?.name?.message}>
         <Input
           type="text"
           id="name"
+          disabled={isCreating}
           {...register("name", {
             required: "This field is required",
           })}
         />
       </FormRow>
 
-      <FormRow
-        label="Maximum capacity"
-        error={errors?.maxCapacity?.message}
-        disabled={isCreating}
-      >
+      <FormRow label="Maximum capacity" error={errors?.maxCapacity?.message}>
         <Input
           type="number"
           id="maxCapacity"
+          disabled={isCreating}
           {...register("maxCapacity", {
             required: "This field is required",
             min: {
@@ -79,38 +78,42 @@ function CreateCabinForm() {
         />
       </FormRow>
 
-      <FormRow
-        label="Regular Price"
-        error={errors?.regularPrice?.message}
-        disabled={isCreating}
-      >
+      <FormRow label="Regular Price" error={errors?.regularPrice?.message}>
         <Input
           type="number"
           id="regularPrice"
+          disabled={isCreating}
           {...register("regularPrice", {
             required: "This field is required",
             min: {
               value: 1,
-              message: "Capacity should be at least 1",
+              message: "Regular price should be at least 1",
             },
           })}
         />
       </FormRow>
 
-      <FormRow
-        label="Discount"
-        error={errors?.discount?.message}
-        disabled={isCreating}
-      >
+      <FormRow label="Discount" error={errors?.discount?.message}>
         <Input
           type="number"
           id="discount"
+          disabled={isCreating}
           defaultValue={0}
           {...register("discount", {
             required: "This field is required",
-            validate: (value) =>
-              value <= getValues().regularPrice ||
-              "Discount should be less than regular price",
+            validate: (value) => {
+              if (+value <= +getValues().regularPrice && +value >= 0) {
+                return true;
+              } else {
+                // return console.log(
+                //   value <= getValues().regularPrice && value >= 0
+                // );
+                return "Discount should be less than regular price and equal or greater than 0";
+              }
+            },
+            // validate: (value) =>
+            //   value <= getValues().regularPrice ||
+            //   "Discount should be less than regular price",
           })}
         />
       </FormRow>
@@ -135,7 +138,14 @@ function CreateCabinForm() {
         error={errors?.image?.message}
         disabled={isCreating}
       >
-        <FileInput id="image" accept="image/*" />
+        <FileInput
+          id="image"
+          accept="image/*"
+          type="file"
+          {...register("image", {
+            required: "This field is required",
+          })}
+        />
       </FormRow>
 
       <FormRow>

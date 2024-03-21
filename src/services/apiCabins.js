@@ -10,19 +10,27 @@ export async function getCabins() {
   return data;
 }
 
-export async function createCabin(newCabin) {
+// Recognized by the cabin ID you want to edit
+export async function createEditCabin(newCabin, id) {
+  const hasImagePath = newCabin.image?.startsWith?.(supabase);
   const imageName = `${Math.random()}-${newCabin.image.name}`.replaceAll(
     "/",
     ""
   );
-  const imagePath = `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`;
+  // To avoid creating a new url again
+  const imagePath = hasImagePath
+    ? newCabin.image
+    : `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`;
+  // 1. Create / edit cabin
+  let query = supabase.from("cabins");
+  // A- Create
+  if (!id) query = query.insert([{ ...newCabin, image: imagePath }]);
 
-  // 1. Create cabin
-  const { data, error } = await supabase
-    .from("cabins")
-    // .insert([newCabin])
-    .insert([{ ...newCabin, image: imagePath }])
-    .select();
+  // B- Edit
+  // use select func for instant re-rendering
+  if (id) query = query.update({ ...newCabin, image: imagePath }).eq("id", id);
+
+  const { data, error } = await query.select().single();
 
   if (error) {
     console.log(error);

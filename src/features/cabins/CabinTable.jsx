@@ -1,9 +1,12 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 import { getCabins } from "../../services/apiCabins";
 import Spinner from "../../ui/Spinner";
 import CabinRow from "./CabinRow";
+import { useState } from "react";
+import EditCabinForm from "./EditCabinForm";
 
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);

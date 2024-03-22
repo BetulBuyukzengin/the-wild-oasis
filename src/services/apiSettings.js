@@ -1,6 +1,7 @@
 import supabase from "./supabase";
 
 export async function getSettings() {
+  // single(): Only one object
   const { data, error } = await supabase.from("settings").select("*").single();
 
   if (error) {

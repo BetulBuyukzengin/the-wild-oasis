@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 
@@ -54,7 +55,7 @@ const Button = styled.button`
 `;
 
 export default function Modal({ children, onClose }) {
-  //! Bileşen ağacında bile
+  //! React portal
   return createPortal(
     <Overlay>
       <StyledModal>

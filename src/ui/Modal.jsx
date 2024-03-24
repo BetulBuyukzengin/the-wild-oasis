@@ -59,7 +59,7 @@ export default function Modal({ children, onClose }) {
   return createPortal(
     <Overlay>
       <StyledModal>
-        <Button onClose={onClose}>
+        <Button onClick={onClose}>
           <HiXMark />
         </Button>
         <div>{children}</div>

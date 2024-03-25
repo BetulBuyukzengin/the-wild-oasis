@@ -1,26 +1,28 @@
 import Button from "../../ui/Button";
 import Modal from "../../ui/Modal";
 import CreateCabinForm from "./CreateCabinForm";
-import CabinTable from "./CabinTable";
+// import CabinTable from "./CabinTable";
 
 //! Compound Component
 function AddCabin() {
   return (
-    <Modal>
-      <Modal.Open opens="cabin-form">
-        <Button>Add new cabin</Button>
-      </Modal.Open>
-      <Modal.Window name="cabin-form">
-        <CreateCabinForm />
-      </Modal.Window>
+    <div>
+      <Modal>
+        <Modal.Open opens="cabin-form">
+          <Button>Add new cabin</Button>
+        </Modal.Open>
+        <Modal.Window name="cabin-form">
+          <CreateCabinForm />
+        </Modal.Window>
 
-      <Modal.Open opens="cabin-table">
+        {/* <Modal.Open opens="cabin-table">
         <Button>Show table</Button>
       </Modal.Open>
       <Modal.Window name="cabin-table">
         <CabinTable />
-      </Modal.Window>
-    </Modal>
+      </Modal.Window> */}
+      </Modal>
+    </div>
   );
 }
 

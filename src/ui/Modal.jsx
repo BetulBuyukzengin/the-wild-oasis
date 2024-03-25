@@ -76,27 +76,14 @@ export default function Modal({ children }) {
 }
 function Open({ children, opens: opensWindowName }) {
   const { open } = useContext(ModalContext);
+  console.log(open);
   //! Use Clone Element in React
   return cloneElement(children, { onClick: () => open(opensWindowName) });
 }
+
 function Window({ children, name }) {
   const { openName, close } = useContext(ModalContext);
   const ref = useOutsideClick(close);
-  // const ref = useRef();
-
-  // useEffect(
-  //   function () {
-  //     function handleClick(e) {
-  //       if (ref.current && !ref.current.contains(e.target)) {
-  //         console.log("out");
-  //         close();
-  //       }
-  //     }
-  //     document.addEventListener("click", handleClick, true);
-  //     return () => document.removeEventListener("click", handleClick, true);
-  //   },
-  //   [close]
-  // );
 
   if (name !== openName) return null;
   //! React portal

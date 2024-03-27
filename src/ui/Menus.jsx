@@ -99,6 +99,7 @@ function Toggle({ id }) {
 }
 function List({ id, children }) {
   const { openId, position, close } = useContext(MenusContext);
+  // close the modal when clicked outside the menu page
   const ref = useOutsideClick(close);
   if (openId !== id) return null;
   return createPortal(

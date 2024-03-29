@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { getToday } from "../utils/helpers";
 import supabase from "./supabase";
 
@@ -14,11 +13,16 @@ export async function getBookings({ filter, sortBy }) {
   // .gte("totalPrice", 5000);
 
   //! Filter
-  if (filter !== null) query = query.eq(filter.field, filter.value);
+  if (filter) query = query.eq(filter.field, filter.value);
 
   //* method dependent status
   // if (filter !== null)
   //   query = query[filter.method || "eq"](filter.field, filter.value);
+
+  //! SORT
+  // supabase queries: ascending and order
+  if (sortBy)
+    query.order(sortBy.field, { ascending: sortBy.direction === "asc" });
 
   const { data, error } = await query;
   if (error) {

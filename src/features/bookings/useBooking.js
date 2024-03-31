@@ -11,7 +11,7 @@ export function useBooking() {
     data: booking,
     error,
   } = useQuery({
-    queryKey: ["booking"],
+    queryKey: ["booking", bookingId],
     queryFn: () => getBooking(bookingId),
     // By defaut query will try to fetch data 3 times, given the value false to prevent this
     retry: false,

@@ -21,10 +21,12 @@ const HeadingGroup = styled.div`
 function BookingDetail() {
   // const booking = {};
   const { booking, isLoading } = useBooking();
+  const moveBack = useMoveBack();
+
+  if (!booking) return;
   const { status, id: bookingId } = booking;
 
   // const status = "checked-in";
-  const moveBack = useMoveBack();
 
   if (isLoading) return <Spinner />;
 
@@ -34,6 +36,7 @@ function BookingDetail() {
     "checked-out": "silver",
   };
 
+  console.log(status, bookingId);
   return (
     <>
       <Row type="horizontal">

@@ -15,7 +15,8 @@ export function useLogin() {
       //   queryClient.invalidateQueries({
       //     active: true,
       //   });
-      navigate("/dashboard");
+      // use replace:true because, block previous path's access by clicking back button
+      navigate("/dashboard", { replace: true });
     },
     onError: () => {
       toast.error("Email or password is wrong");

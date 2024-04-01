@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styled from "styled-components";
 
 // import BookingDataBox from "./BookingDataBox";
@@ -13,6 +12,7 @@ import BookingDataBox from "../bookings/BookingDataBox";
 import { useMoveBack } from "../../hooks/useMoveBack";
 import { useBooking } from "./useBooking";
 import { useNavigate } from "react-router-dom";
+
 const HeadingGroup = styled.div`
   display: flex;
   gap: 2.4rem;
@@ -50,7 +50,6 @@ function BookingDetail() {
       </Row>
 
       <BookingDataBox booking={booking} />
-
       <ButtonGroup>
         {status === "unconfirmed" && (
           <Button onClick={() => navigate(`/checkin/${bookingId}`)}>

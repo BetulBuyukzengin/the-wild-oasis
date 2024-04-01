@@ -10,11 +10,19 @@ function LoginForm() {
   const [email, setEmail] = useState("betul@gmail.com");
   const [password, setPassword] = useState("betul123");
   const { isLoggingIn, login } = useLogin();
-  console.log(login);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (!email || !password) return;
-    login({ email, password });
+    login(
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail("");
+          setPassword("");
+        },
+      }
+    );
   }
 
   return (

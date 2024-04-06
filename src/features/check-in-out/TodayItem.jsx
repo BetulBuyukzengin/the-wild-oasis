@@ -34,7 +34,7 @@ function TodayItem({ activity }) {
       <Guest>{guests.fullName}</Guest>
       <div>{numNights} nights</div>
 
-      {status === unconfirmed && (
+      {status === "unconfirmed" && (
         <Button
           size="small"
           variation="primary"

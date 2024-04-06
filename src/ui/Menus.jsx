@@ -84,6 +84,8 @@ function Toggle({ id }) {
   const { openId, close, open, setPosition } = useContext(MenusContext);
 
   function handleClick(e) {
+    //* use false for open-close bug
+    e.stopPropagation();
     const rect = e.target.closest("button").getBoundingClientRect();
     setPosition({
       x: window.innerWidth - rect.width - rect.x,
@@ -100,7 +102,8 @@ function Toggle({ id }) {
 function List({ id, children }) {
   const { openId, position, close } = useContext(MenusContext);
   // close the modal when clicked outside the menu page
-  const ref = useOutsideClick(close);
+  //* use false for open-close bug
+  const ref = useOutsideClick(close, false);
   if (openId !== id) return null;
   return createPortal(
     // <StyledList position={{ x: 20, y: 20 }}>{children}</StyledList>,

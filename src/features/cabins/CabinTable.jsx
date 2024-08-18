@@ -10,12 +10,13 @@ import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
 import Empty from "../../ui/Empty";
+import { useTranslation } from "react-i18next";
 
 function CabinTable() {
   //! use data with useQuery
   const { isLoading, cabins, error } = useCabins();
   const [searchParams] = useSearchParams();
-
+  const { t } = useTranslation();
   if (isLoading) return <Spinner />;
   if (!cabins.length) return <Empty resourceName="cabins" />;
 
@@ -42,10 +43,10 @@ function CabinTable() {
       <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
         <Table.Header>
           <div></div>
-          <div>Cabin</div>
-          <div>Capacity</div>
-          <div>Price</div>
-          <div>Discount</div>
+          <div>{t("Cabin")}</div>
+          <div>{t("Capacity")}</div>
+          <div>{t("Price")}</div>
+          <div>{t("Discount")}</div>
           <div></div>
         </Table.Header>
 

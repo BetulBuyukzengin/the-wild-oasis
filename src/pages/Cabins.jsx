@@ -5,8 +5,10 @@ import { getCabins } from "../services/apiCabins";
 import CabinTable from "../features/cabins/CabinTable";
 import AddCabin from "../features/cabins/AddCabin";
 import CabinTableOperations from "../features/cabins/CabinTableOperations";
+import { useTranslation } from "react-i18next";
 
 function Cabins() {
+  const { t } = useTranslation();
   useEffect(function () {
     getCabins().then((data) => console.log(data));
   }, []);
@@ -16,7 +18,7 @@ function Cabins() {
   return (
     <>
       <Row type="horizontal">
-        <Heading as="h1">All cabins</Heading>
+        <Heading as="h1">{t("All cabins")}</Heading>
         <CabinTableOperations />
       </Row>
       <Row>

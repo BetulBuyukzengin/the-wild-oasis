@@ -4,6 +4,8 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { PAGE_SIZE } from "../utils/constants";
+import { useTranslation } from "react-i18next";
+
 const StyledPagination = styled.div`
   width: 100%;
   display: flex;
@@ -62,6 +64,7 @@ const PaginationButton = styled.button`
 
 function Pagination({ count }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation();
   const currentPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
@@ -94,13 +97,13 @@ function Pagination({ count }) {
       <Buttons>
         <PaginationButton onClick={prevPage} disabled={currentPage === 1}>
           <HiChevronLeft />
-          <span>Previous</span>
+          <span>{t("Previous")}</span>
         </PaginationButton>
         <PaginationButton
           onClick={nextPage}
           disabled={currentPage === pageCount}
         >
-          <span>Next</span>
+          <span>{t("Next")}</span>
           <HiChevronRight />
         </PaginationButton>
       </Buttons>

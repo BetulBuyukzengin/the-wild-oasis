@@ -8,6 +8,7 @@ import {
   HiOutlineHomeModern,
   HiOutlineUsers,
 } from "react-icons/hi2";
+import { useTranslation } from "react-i18next";
 
 const NavList = styled.ul`
   display: flex;
@@ -54,37 +55,39 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 function MainNav() {
+  const { t } = useTranslation();
+
   return (
     <nav>
       <NavList>
         <li>
           <StyledNavLink to="/dashboard">
             <HiHome />
-            <span>Home</span>
+            <span>{t("Home")}</span>
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/bookings">
             <HiOutlineCalendarDays />
-            <span>Bookings</span>
+            <span>{t("Bookings")}</span>
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/cabins">
             <HiOutlineHomeModern />
-            <span>Cabins</span>
+            <span>{t("Cabins")}</span>
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/users">
             <HiOutlineUsers />
-            <span>Users</span>
+            <span>{t("Users")}</span>
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/settings">
             <HiOutlineCog6Tooth />
-            <span>Settings</span>
+            <span>{t("Settings")}</span>
           </StyledNavLink>
         </li>
       </NavList>

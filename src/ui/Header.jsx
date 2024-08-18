@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import HeaderMenu from "./HeaderMenu";
 import UserAvatar from "../features/authentication/UserAvatar";
+import LanguageSelection from "./LanguageSelection";
 
 const StyledHeader = styled.header`
   background-color: var(--color-grey-0);
@@ -16,6 +17,7 @@ function Header() {
     <StyledHeader>
       <UserAvatar />
       <HeaderMenu />
+      <LanguageSelection />
     </StyledHeader>
   );
 }

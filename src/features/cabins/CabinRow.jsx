@@ -10,6 +10,7 @@ import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
+import { useTranslation } from "react-i18next";
 
 const Img = styled.img`
   display: block;
@@ -41,6 +42,8 @@ function CabinRow({ cabin }) {
   //! Delete cabins, use custom hook
   const { isDeleting, deleteCabin } = useDeleteCabin();
   const { isCreating, createCabin } = useCreateCabin();
+  const { t } = useTranslation();
+
   const {
     id: cabinId,
     name,
@@ -65,7 +68,9 @@ function CabinRow({ cabin }) {
     <Table.Row>
       <Img src={image} />
       <Cabin>{name}</Cabin>
-      <div>Fits up to {maxCapacity} guests</div>
+      <div>{t("Fits up to {{maxCapacity}} guests", { maxCapacity })}</div>
+
+      {/* <div>t(Fits up to {{ maxCapacity }} guests)</div> */}
       <Price>{formatCurrency(regularPrice)}</Price>
       {discount ? (
         <Discount>{formatCurrency(discount)}</Discount>
@@ -79,15 +84,15 @@ function CabinRow({ cabin }) {
 
             <Menus.List id={cabinId}>
               <Menus.Button icon={<HiSquare2Stack />} onClick={handleDuplicate}>
-                Duplicate
+                {t("Duplicate")}
               </Menus.Button>
 
               <Modal.Open opens="edit">
-                <Menus.Button icon={<HiPencil />}>Edit</Menus.Button>
+                <Menus.Button icon={<HiPencil />}>{t("Edit")}</Menus.Button>
               </Modal.Open>
 
               <Modal.Open opens="delete">
-                <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
+                <Menus.Button icon={<HiTrash />}>{t("Delete")}</Menus.Button>
               </Modal.Open>
             </Menus.List>
 

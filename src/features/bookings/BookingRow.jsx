@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { useCheckout } from "../check-in-out/useCheckout";
 import Spinner from "../../ui/Spinner";
 import { useDeleteBooking } from "./useDeleteBooking";
+import { useTranslation } from "react-i18next";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -65,7 +66,7 @@ function BookingRow({
 }) {
   const navigate = useNavigate();
   const { checkout, isCheckingOut } = useCheckout();
-
+  const { t } = useTranslation();
   const { deleteBooking, isDeleting } = useDeleteBooking();
 
   const statusToTagName = {
@@ -74,10 +75,10 @@ function BookingRow({
     "checked-out": "silver",
   };
   if (isCheckingOut) return <Spinner />;
+
   return (
     <Table.Row>
       <Cabin>{cabinName}</Cabin>
-
       <Stacked>
         <span>{guestName}</span>
         <span>{email}</span>
@@ -108,7 +109,7 @@ function BookingRow({
               icon={<HiEye />}
               onClick={() => navigate(`/bookings/${bookingId}`)}
             >
-              See details
+              {t("See details")}
             </Menus.Button>
 
             {status === "unconfirmed" && (
@@ -116,7 +117,7 @@ function BookingRow({
                 icon={<HiArrowDownOnSquare />}
                 onClick={() => navigate(`/checkin/${bookingId}`)}
               >
-                Check in
+                {t("Check in")}
               </Menus.Button>
             )}
 
@@ -126,11 +127,13 @@ function BookingRow({
                 onClick={() => checkout(bookingId)}
                 disabled={isCheckingOut}
               >
-                Check out
+                {t("Check out")}
               </Menus.Button>
             )}
             <Modal.Open opens="delete">
-              <Menus.Button icon={<HiTrash />}>Delete booking</Menus.Button>
+              <Menus.Button icon={<HiTrash />}>
+                {t("Delete booking")}
+              </Menus.Button>
             </Modal.Open>
           </Menus.List>
         </Menus.Menu>

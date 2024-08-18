@@ -6,23 +6,25 @@ import Empty from "../../ui/Empty";
 import Spinner from "../../ui/Spinner";
 import { useBookings } from "./useBookings";
 import Pagination from "../../ui/Pagination";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 function BookingTable() {
-  // const bookings = [];
   const { bookings, isLoading, count } = useBookings();
-  // console.log(count);
-  if (isLoading) return <Spinner />;
+  const { t } = useTranslation();
 
-  if (!bookings.length) return <Empty resourceName="bookings" />;
+  if (isLoading) return <Spinner />;
+  if (!bookings?.length) return <Empty resourceName="bookings" />;
+
   return (
     <Menus>
       <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 3.2rem">
         <Table.Header>
-          <div>Cabin</div>
-          <div>Guest</div>
-          <div>Dates</div>
-          <div>Status</div>
-          <div>Amount</div>
+          <div>{t("Cabin")}</div>
+          <div>{t("Guest")}</div>
+          <div>{t("Dates")}</div>
+          <div>{t("Status")}</div>
+          <div>{t("Amount")}</div>
           <div></div>
         </Table.Header>
 

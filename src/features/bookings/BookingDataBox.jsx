@@ -12,6 +12,7 @@ import DataItem from "../../ui/DataItem";
 import { Flag } from "../../ui/Flag";
 
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
+import { useTranslation } from "react-i18next";
 
 const StyledBookingDataBox = styled.section`
   /* Box */
@@ -119,6 +120,7 @@ function BookingDataBox({ booking }) {
     guests: { fullName: guestName, email, country, countryFlag, nationalID },
     cabins: { name: cabinName },
   } = booking;
+  const { t } = useTranslation();
 
   return (
     <StyledBookingDataBox>
@@ -148,7 +150,9 @@ function BookingDataBox({ booking }) {
           <span>&bull;</span>
           <p>{email}</p>
           <span>&bull;</span>
-          <p>National ID {nationalID}</p>
+          <p>
+            {t("National ID")} {nationalID}
+          </p>
         </Guest>
 
         {observations && (
@@ -160,12 +164,15 @@ function BookingDataBox({ booking }) {
           </DataItem>
         )}
 
-        <DataItem icon={<HiOutlineCheckCircle />} label="Breakfast included?">
-          {hasBreakfast ? "Yes" : "No"}
+        <DataItem
+          icon={<HiOutlineCheckCircle />}
+          label={t("Breakfast included?")}
+        >
+          {hasBreakfast ? t("Yes") : t("No")}
         </DataItem>
 
         <Price isPaid={isPaid}>
-          <DataItem icon={<HiOutlineCurrencyDollar />} label={`Total price`}>
+          <DataItem icon={<HiOutlineCurrencyDollar />} label={t("Total price")}>
             {formatCurrency(totalPrice)}
 
             {hasBreakfast &&
@@ -174,7 +181,7 @@ function BookingDataBox({ booking }) {
               )} breakfast)`}
           </DataItem>
 
-          <p>{isPaid ? "Paid" : "Will pay at property"}</p>
+          <p>{isPaid ? t("Paid") : t("Will pay at property")}</p>
         </Price>
       </Section>
 

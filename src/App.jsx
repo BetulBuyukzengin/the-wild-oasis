@@ -16,6 +16,7 @@ import { Toaster } from "react-hot-toast";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import Booking from "./pages/Booking";
 import Checkin from "./pages/Checkin";
+// import "./i18n";
 
 //! Create place where data lives
 const queryClient = new QueryClient({

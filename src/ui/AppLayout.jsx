@@ -8,11 +8,20 @@ const StyledAppLayout = styled.div`
   grid-template-columns: 26rem 1fr;
   grid-template-rows: auto 1fr;
   height: 100vh;
+
+  @media (max-width: 48em) {
+    grid-template-columns: none;
+  }
 `;
 const Main = styled.main`
   background-color: var(--color-grey-50);
   overflow: scroll;
   padding: 4rem 4.8rem 6.4rem;
+  @media (max-width: 48em) {
+    padding: 4rem 2rem;
+    height: 100%;
+    overflow-x: hidden;
+  }
 `;
 const Container = styled.div`
   max-width: 120rem;

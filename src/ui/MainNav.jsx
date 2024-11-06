@@ -54,38 +54,38 @@ const StyledNavLink = styled(NavLink)`
     color: var(--color-brand-600);
   }
 `;
-function MainNav() {
+function MainNav({ toggleDrawer }) {
   const { t } = useTranslation();
 
   return (
     <nav>
       <NavList>
         <li>
-          <StyledNavLink to="/dashboard">
+          <StyledNavLink to="/dashboard" onClick={toggleDrawer}>
             <HiHome />
             <span>{t("Home")}</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/bookings">
+          <StyledNavLink to="/bookings" onClick={toggleDrawer}>
             <HiOutlineCalendarDays />
             <span>{t("Bookings")}</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/cabins">
+          <StyledNavLink to="/cabins" onClick={toggleDrawer}>
             <HiOutlineHomeModern />
             <span>{t("Cabins")}</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/users">
+          <StyledNavLink to="/users" onClick={toggleDrawer}>
             <HiOutlineUsers />
             <span>{t("Users")}</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/settings">
+          <StyledNavLink to="/settings" onClick={toggleDrawer}>
             <HiOutlineCog6Tooth />
             <span>{t("Settings")}</span>
           </StyledNavLink>

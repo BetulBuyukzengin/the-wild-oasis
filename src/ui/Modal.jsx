@@ -76,7 +76,6 @@ export default function Modal({ children }) {
 }
 function Open({ children, opens: opensWindowName }) {
   const { open } = useContext(ModalContext);
-  console.log(open);
   //! Use Clone Element in React
   return cloneElement(children, { onClick: () => open(opensWindowName) });
 }

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import HeaderMenu from "./HeaderMenu";
 import UserAvatar from "../features/authentication/UserAvatar";
 import LanguageSelection from "./LanguageSelection";
+import { useMediaQuery } from "usehooks-ts";
 
 const StyledHeader = styled.header`
   background-color: var(--color-grey-0);
@@ -11,13 +12,25 @@ const StyledHeader = styled.header`
   gap: 2.4rem;
   align-items: center;
   justify-content: flex-end;
+  @media (max-width: 48em) {
+    padding: 1rem 4.8rem;
+  }
 `;
 function Header() {
+  const isSmallScreen = useMediaQuery("(max-width:48em)");
   return (
     <StyledHeader>
-      <UserAvatar />
-      <HeaderMenu />
-      <LanguageSelection />
+      {isSmallScreen ? (
+        <>
+          <UserAvatar />
+        </>
+      ) : (
+        <>
+          <UserAvatar />
+          <HeaderMenu />
+          <LanguageSelection />
+        </>
+      )}
     </StyledHeader>
   );
 }

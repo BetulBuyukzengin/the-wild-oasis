@@ -59,22 +59,10 @@ function CreateCabinForm({ cabinToEdit = {} }) {
     else createCabin({ ...data, image: image });
   }
   function onError(errors) {
-    console.error(errors);
+    throw new Error(errors);
   }
   return (
     <Form onSubmit={handleSubmit(onSubmit, onError)}>
-      {/* <FormRow>
-        <Label htmlFor="name">Cabin name</Label>
-        <Input
-          type="text"
-          id="name"
-          {...register("name", {
-            required: "This field is required",
-          })}
-        />
-        {errors?.name?.message && <Error>{errors.name.message}</Error>}
-      </FormRow> */}
-
       <FormRow label="Cabin name" error={errors?.name?.message}>
         <Input
           type="text"

@@ -13,6 +13,10 @@ const StyledDashboardLayout = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto 34rem auto;
   gap: 2.4rem;
+  @media (max-width: 48em) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 25rem auto;
+  }
 `;
 function DashboardLayout() {
   const { bookings, isLoading: isLoading1 } = useRecentBookings();
@@ -28,6 +32,7 @@ function DashboardLayout() {
         numDays={numDays}
         cabinCount={cabins.length}
       />
+
       <TodayActivity />
       <DurationChart confirmedStays={confirmedStays} />
       <SalesChart bookings={bookings} numDays={numDays} />

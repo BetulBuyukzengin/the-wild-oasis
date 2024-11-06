@@ -21,13 +21,18 @@ const StyledConfirmDelete = styled.div`
     justify-content: flex-end;
     gap: 1.2rem;
   }
+  @media (max-width: 48em) {
+    width: 35rem;
+
+    padding: 1.2rem 1rem;
+  }
 `;
 
 function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
   const { t } = useTranslation();
   return (
     <StyledConfirmDelete>
-      <Heading as="h3">
+      <Heading as="h2">
         {t("Delete {{resourceName}}", { resourceName })}
       </Heading>
       <p>

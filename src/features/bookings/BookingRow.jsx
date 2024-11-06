@@ -60,14 +60,17 @@ function BookingRow({
     numGuests,
     totalPrice,
     status,
-    guests: { fullName: guestName, email },
-    cabins: { name: cabinName },
+    guests,
+    cabins,
   },
 }) {
   const navigate = useNavigate();
   const { checkout, isCheckingOut } = useCheckout();
   const { t } = useTranslation();
   const { deleteBooking, isDeleting } = useDeleteBooking();
+  const guestName = guests?.fullName || t("Unknown guest");
+  const email = guests?.email || t("No email provided");
+  const cabinName = cabins?.name || t("Unknown cabin");
 
   const statusToTagName = {
     unconfirmed: "blue",
@@ -97,7 +100,7 @@ function BookingRow({
         </span>
       </Stacked>
 
-      <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
+      <Tag type={statusToTagName[status]}>{status?.replace("-", " ")}</Tag>
 
       <Amount>{formatCurrency(totalPrice)}</Amount>
 
@@ -149,5 +152,4 @@ function BookingRow({
     </Table.Row>
   );
 }
-
 export default BookingRow;

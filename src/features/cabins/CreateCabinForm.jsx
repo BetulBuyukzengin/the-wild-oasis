@@ -57,25 +57,13 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
       );
   }
   function onError(errors) {
-    console.error(errors);
+    throw new Error(errors);
   }
   return (
     <Form
       onSubmit={handleSubmit(onSubmit, onError)}
       type={onCloseModal ? "modal" : ""}
     >
-      {/* <FormRow>
-        <Label htmlFor="name">Cabin name</Label>
-        <Input
-          type="text"
-          id="name"
-          {...register("name", {
-            required: t("This field is required!"),
-          })}
-        />
-        {errors?.name?.message && <Error>{errors.name.message}</Error>}
-      </FormRow> */}
-
       <FormRow label={t("Cabin name")} error={errors?.name?.message}>
         <Input
           type="text"

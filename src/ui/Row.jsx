@@ -14,6 +14,11 @@ const Row = styled.div`
       flex-direction: column;
       gap: 1.6rem;
     `}
+    @media (max-width:48em) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 `;
 Row.defaultProps = { type: "vertical" };
 export default Row;

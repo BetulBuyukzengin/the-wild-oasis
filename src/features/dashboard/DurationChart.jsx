@@ -27,6 +27,9 @@ const ChartBox = styled.div`
   & .recharts-pie-label-text {
     font-weight: 600;
   }
+  @media (max-width: 48em) {
+    grid-column: 1;
+  }
 `;
 
 const startDataLight = [

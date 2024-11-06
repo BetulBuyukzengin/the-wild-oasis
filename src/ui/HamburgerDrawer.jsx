@@ -21,7 +21,7 @@ function HamburgerDrawer({ children, setOpen, open, toggleDrawer }) {
         label="appSidebar"
         rounded
         size={16}
-        color="white"
+        color="var(--color-grey-900)"
         toggle={() => setOpen(!open)}
         toggled={open}
       />
@@ -32,9 +32,9 @@ function HamburgerDrawer({ children, setOpen, open, toggleDrawer }) {
           padding: "3.2rem 2.4rem",
           borderRight: "1px solid var(--color-grey-100)",
           display: "flex",
-          gap: "3rem",
-
+          gap: "1rem",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
         }}
         lockBackgroundScroll
@@ -42,12 +42,18 @@ function HamburgerDrawer({ children, setOpen, open, toggleDrawer }) {
         onClose={toggleDrawer}
         direction="left"
       >
-        <span style={{ position: "absolute", top: "0", right: "0" }}>
+        <span
+          style={{
+            position: "absolute",
+            top: "0",
+            right: "0",
+          }}
+        >
           <Sling
             label="appSidebar"
             rounded
             size={16}
-            color="white"
+            color="var(--color-grey-900)"
             toggle={() => setOpen(!open)}
             toggled={open}
           />

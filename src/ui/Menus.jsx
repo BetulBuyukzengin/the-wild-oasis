@@ -64,6 +64,9 @@ const StyledButton = styled.button`
     color: var(--color-grey-400);
     transition: all 0.3s;
   }
+  @media (max-width: 48em) {
+    font-size: 1rem;
+  }
 `;
 const MenusContext = createContext();
 function Menus({ children }) {

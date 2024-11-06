@@ -5,6 +5,7 @@ import Row from "../../ui/Row";
 import { useTodayActivity } from "./useTodayActivity";
 import Spinner from "../../ui/Spinner";
 import TodayItem from "./TodayItem";
+import { useMediaQuery } from "usehooks-ts";
 
 const StyledToday = styled.div`
   background-color: var(--color-grey-0);
@@ -38,14 +39,18 @@ const NoActivity = styled.p`
   font-size: 1.8rem;
   font-weight: 500;
   margin-top: 0.8rem;
+  @media (max-width: 48em) {
+    font-size: 1.1rem;
+  }
 `;
 
 function TodayActivity() {
   const { activities, isLoading } = useTodayActivity();
+  const isSmallScreen = useMediaQuery("(max-width:48em)");
   return (
     <StyledToday>
       <Row type="horizontal">
-        <Heading as="h2">Today</Heading>
+        <Heading as={isSmallScreen ? "h5" : "h2"}>Today</Heading>
       </Row>
 
       {!isLoading ? (

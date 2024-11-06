@@ -48,6 +48,9 @@ const Value = styled.p`
   font-size: 2.4rem;
   line-height: 1;
   font-weight: 500;
+  @media (max-width: 48em) {
+    font-size: 1.4rem;
+  }
 `;
 
 function Stat({ icon, title, value, color }) {

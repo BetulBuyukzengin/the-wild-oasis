@@ -17,6 +17,9 @@ const CommonRow = styled.div`
   column-gap: 2.4rem;
   align-items: center;
   transition: none;
+  @media (max-width: 48em) {
+    column-gap: 1rem;
+  }
 `;
 
 const StyledHeader = styled(CommonRow)`
@@ -27,6 +30,10 @@ const StyledHeader = styled(CommonRow)`
   letter-spacing: 0.4px;
   font-weight: 600;
   color: var(--color-grey-600);
+  @media (max-width: 48em) {
+    font-size: 1.2rem;
+    padding: 1.6rem 1rem;
+  }
 `;
 
 const StyledRow = styled(CommonRow)`
@@ -37,11 +44,15 @@ const StyledRow = styled(CommonRow)`
   }
   @media (max-width: 48em) {
     overflow-x: scroll;
+    font-size: 1rem;
   }
 `;
 
 const StyledBody = styled.section`
   margin: 0.4rem 0;
+  @media (max-width: 48em) {
+    font-size: 1rem;
+  }
 `;
 
 const Footer = styled.footer`
@@ -61,6 +72,9 @@ const Empty = styled.p`
   font-weight: 500;
   text-align: center;
   margin: 2.4rem;
+  @media (max-width: 48em) {
+    font-size: 1rem;
+  }
 `;
 const TableContext = createContext();
 function Table({ columns, children }) {

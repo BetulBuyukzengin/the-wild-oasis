@@ -28,11 +28,17 @@ const StyledFormRow = styled.div`
     gap: 1.2rem;
   }
   @media (max-width: 48em) {
-    grid-template-columns: 14rem 1fr 1.2fr;
+    grid-template-columns: ${(props) =>
+      props.updateHotel ? "9rem 1fr 1.2fr" : "6rem 1fr 1.2fr"};
+    justify-content: ${(props) =>
+      props.passwordForm ? "flex-start!important" : "flex-end"};
   }
 `;
 const Label = styled.label`
   font-weight: 500;
+  @media (max-width: 48em) {
+    font-size: 1.2rem;
+  }
 `;
 
 const Error = styled.span`
@@ -40,9 +46,9 @@ const Error = styled.span`
   color: var(--color-red-700);
 `;
 
-function FormRow({ label, error, children }) {
+function FormRow({ label, error, children, passwordForm, updateHotel }) {
   return (
-    <StyledFormRow>
+    <StyledFormRow passwordForm={passwordForm} updateHotel={updateHotel}>
       {label && <Label htmlFor={children.props.id}>{label}</Label>}
       {children}
       {error && <Error>{error}</Error>}

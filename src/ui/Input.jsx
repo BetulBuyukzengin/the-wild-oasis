@@ -6,5 +6,9 @@ const Input = styled.input`
   border-radius: var(--border-radius-sm);
   padding: 0.8rem 1.2rem;
   box-shadow: var(--shadow-sm);
+  @media (max-width: 48em) {
+    width: 13rem;
+    font-size: 1rem;
+  }
 `;
 export default Input;

@@ -57,6 +57,9 @@ const Button = styled.button`
   box-shadow: var(--shadow-sm);
   ${(props) => sizes[props.size]}
   ${(props) => variations[props.variation]}
+  @media (max-width: 48em) {
+    font-size: 1rem;
+  }
 `;
 //! Default value
 Button.defaultProps = {

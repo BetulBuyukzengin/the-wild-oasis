@@ -4,13 +4,15 @@ import CabinTable from "../features/cabins/CabinTable";
 import CabinTableOperations from "../features/cabins/CabinTableOperations";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
+import { useMediaQuery } from "usehooks-ts";
 
 function Cabins() {
   const { t } = useTranslation();
+  const isSmallScreen = useMediaQuery("(max-width:48em)");
   return (
     <>
       <Row type="horizontal">
-        <Heading as="h1">{t("All cabins")}</Heading>
+        <Heading as={isSmallScreen ? "h5" : "h1"}>{t("All cabins")}</Heading>
         <CabinTableOperations />
       </Row>
       <Row>

@@ -34,6 +34,9 @@ const FilterButton = styled.button`
     background-color: var(--color-brand-600);
     color: var(--color-brand-50);
   }
+  @media (max-width: 48em) {
+    font-size: 1.2rem;
+  }
 `;
 function Filter({ filterField, options }) {
   //! send value to url

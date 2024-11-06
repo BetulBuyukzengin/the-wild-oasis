@@ -10,6 +10,7 @@ import {
   Tooltip,
 } from "recharts";
 import { useDarkMode } from "../../context/DarkModeContext";
+import { useMediaQuery } from "usehooks-ts";
 
 const ChartBox = styled.div`
   /* Box */
@@ -148,9 +149,11 @@ function DurationChart({ confirmedStays }) {
   const { isDarkMode } = useDarkMode();
   const startData = isDarkMode ? startDataDark : startDataLight;
   const data = prepareData(startData, confirmedStays);
+  const isSmallScreen = useMediaQuery("(max-width:48em)");
+
   return (
     <ChartBox>
-      <Heading as="h2">Stay duration summary</Heading>
+      <Heading as={isSmallScreen ? "h5" : "h2"}>Stay duration summary</Heading>
       <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Pie

@@ -13,6 +13,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
+import { useMediaQuery } from "usehooks-ts";
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
 
@@ -57,7 +58,7 @@ const StyledSalesChart = styled(DashboardBox)`
 
 function SalesChart({ bookings, numDays }) {
   const { isDarkMode } = useDarkMode();
-  // const isDarkMode = true;
+  const isSmallScreen = useMediaQuery("(max-width:48em)");
 
   const allDates = eachDayOfInterval({
     start: subDays(new Date(), numDays - 1),
@@ -91,12 +92,16 @@ function SalesChart({ bookings, numDays }) {
 
   return (
     <StyledSalesChart>
-      <Heading as="h2">
+      <Heading as={isSmallScreen ? "h5" : "h2"}>
         Sales from {format(allDates.at(0), "MMM dd yyyy")} &mdash;
         {format(allDates.at(-1), "MMM dd yyyy")}
       </Heading>
 
-      <ResponsiveContainer height={300} width="100%">
+      <ResponsiveContainer
+        height={isSmallScreen ? 200 : 300}
+        width="100%"
+        style={{ fontSize: `${isSmallScreen ? "1.2rem" : "2rem"}` }}
+      >
         <AreaChart data={data}>
           <XAxis
             dataKey="label"

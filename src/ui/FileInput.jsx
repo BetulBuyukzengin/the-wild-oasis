@@ -3,7 +3,9 @@ import styled from "styled-components";
 const FileInput = styled.input.attrs({ type: "file" })`
   font-size: 1.4rem;
   border-radius: var(--border-radius-sm);
-
+  @media (max-width: 48em) {
+    font-size: 1rem;
+  }
   &::file-selector-button {
     font: inherit;
     font-weight: 500;
@@ -18,6 +20,9 @@ const FileInput = styled.input.attrs({ type: "file" })`
 
     &:hover {
       background-color: var(--color-brand-700);
+    }
+    @media (max-width: 48em) {
+      font-size: 1rem;
     }
   }
 `;

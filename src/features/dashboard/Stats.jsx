@@ -3,8 +3,11 @@ import { HiOutlineBriefcase, HiOutlineChartBar } from "react-icons/hi";
 import Stat from "./Stat";
 import { HiOutlineBanknotes, HiOutlineCalendarDays } from "react-icons/hi2";
 import { formatCurrency } from "../../utils/helpers";
+import { useTranslation } from "react-i18next";
 
 function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
+  const { t } = useTranslation();
+
   // 1.
   const numBookings = bookings.length;
 
@@ -23,25 +26,25 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
   return (
     <>
       <Stat
-        title="Bookings"
+        title={t("Bookings")}
         color="blue"
         icon={<HiOutlineBriefcase />}
         value={numBookings}
       />
       <Stat
-        title="Sales"
+        title={t("Sales")}
         color="green"
         icon={<HiOutlineBanknotes />}
         value={formatCurrency(sales)}
       />
       <Stat
-        title="Check ins"
+        title={t("Check ins")}
         color="indigo"
         icon={<HiOutlineCalendarDays />}
         value={checkins}
       />
       <Stat
-        title="Occupancy rate"
+        title={t("Occupancy rate")}
         color="yellow"
         icon={<HiOutlineChartBar />}
         value={Math.round(occupation * 100) + "%"}

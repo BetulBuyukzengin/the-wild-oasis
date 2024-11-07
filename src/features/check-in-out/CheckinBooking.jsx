@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { formatCurrency } from "../../utils/helpers";
 import { useCheckin } from "./useCheckin";
 import { useSettings } from "../settings/useSettings";
+import { useTranslation } from "react-i18next";
 
 const Box = styled.div`
   /* Box */
@@ -39,7 +40,7 @@ function CheckinBooking() {
   }, [booking?.isPaid]);
 
   const { checkin, isCheckingIn } = useCheckin();
-
+  const { t } = useTranslation();
   if (isLoading || isLoadingSetting) return <Spinner />;
 
   const {
@@ -74,7 +75,9 @@ function CheckinBooking() {
   return (
     <>
       <Row type="horizontal">
-        <Heading as="h1">Check in booking #{bookingId}</Heading>
+        <Heading as="h1">
+          {t("Check in booking")} #{bookingId}
+        </Heading>
         <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
       </Row>
 
@@ -89,7 +92,8 @@ function CheckinBooking() {
             }}
             id="breakfast"
           >
-            Want to add breakfast for {formatCurrency(optionalBreakfastPrice)}?
+            {t("Want to add breakfast for")}{" "}
+            {formatCurrency(optionalBreakfastPrice)}?
           </Checkbox>
         </Box>
       )}
@@ -113,10 +117,10 @@ function CheckinBooking() {
       </Box>
       <ButtonGroup>
         <Button disabled={!confirmPaid || isCheckingIn} onClick={handleCheckin}>
-          Check in booking #{bookingId}
+          {t("Check in booking")} #{bookingId}
         </Button>
         <Button variation="secondary" onClick={moveBack}>
-          Back
+          {t("Back")}
         </Button>
       </ButtonGroup>
     </>

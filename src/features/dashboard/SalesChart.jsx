@@ -14,6 +14,7 @@ import {
 } from "recharts";
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 import { useMediaQuery } from "usehooks-ts";
+import { useTranslation } from "react-i18next";
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
 
@@ -59,7 +60,7 @@ const StyledSalesChart = styled(DashboardBox)`
 function SalesChart({ bookings, numDays }) {
   const { isDarkMode } = useDarkMode();
   const isSmallScreen = useMediaQuery("(max-width:48em)");
-
+  const { t } = useTranslation();
   const allDates = eachDayOfInterval({
     start: subDays(new Date(), numDays - 1),
     end: new Date(),
@@ -93,7 +94,7 @@ function SalesChart({ bookings, numDays }) {
   return (
     <StyledSalesChart>
       <Heading as={isSmallScreen ? "h5" : "h2"}>
-        Sales from {format(allDates.at(0), "MMM dd yyyy")} &mdash;
+        {t("Sales from")} {format(allDates.at(0), "MMM dd yyyy")} &mdash;
         {format(allDates.at(-1), "MMM dd yyyy")}
       </Heading>
 
@@ -121,7 +122,7 @@ function SalesChart({ bookings, numDays }) {
             stroke={colors.totalSales.stroke}
             fill={colors.totalSales.fill}
             strokeWidth={2}
-            name="Total Sales"
+            name={t("Total sales")}
             unit="$"
           />
           <Area
@@ -130,7 +131,7 @@ function SalesChart({ bookings, numDays }) {
             stroke={colors.extrasSales.stroke}
             fill={colors.extrasSales.fill}
             strokeWidth={2}
-            name="Extras sales"
+            name={t("Extras sales")}
             unit="$"
           />
         </AreaChart>

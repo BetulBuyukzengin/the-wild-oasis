@@ -8,6 +8,7 @@ import Input from "../../ui/Input";
 
 import { useUser } from "./useUser";
 import { useUpdateUser } from "./useUpdateUser";
+import { useTranslation } from "react-i18next";
 
 function UpdateUserDataForm() {
   // We don't need the loading state, and can immediately use the user data, because we know that it has already been loaded at this point
@@ -22,7 +23,7 @@ function UpdateUserDataForm() {
 
   const [fullName, setFullName] = useState(currentFullName);
   const [avatar, setAvatar] = useState(null);
-
+  const { t } = useTranslation();
   function handleSubmit(e) {
     e.preventDefault();
     if (!fullName) return;
@@ -42,10 +43,10 @@ function UpdateUserDataForm() {
   }
   return (
     <Form onSubmit={handleSubmit}>
-      <FormRow label="Email address">
+      <FormRow label={t("Email address")}>
         <Input value={email} disabled />
       </FormRow>
-      <FormRow label="Full name">
+      <FormRow label={t("Full name")}>
         <Input
           type="text"
           value={fullName}
@@ -54,7 +55,7 @@ function UpdateUserDataForm() {
           id="fullName"
         />
       </FormRow>
-      <FormRow label="Avatar image">
+      <FormRow label={t("Avatar image")}>
         <FileInput
           id="avatar"
           accept="image/*"
@@ -69,9 +70,9 @@ function UpdateUserDataForm() {
           disabled={isUpdating}
           onClick={handleCancel}
         >
-          Cancel
+          {t("Cancel")}
         </Button>
-        <Button disabled={isUpdating}>Update account</Button>
+        <Button disabled={isUpdating}>{t("Update account")}</Button>
       </FormRow>
     </Form>
   );

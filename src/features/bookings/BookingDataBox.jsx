@@ -136,14 +136,14 @@ function BookingDataBox({ booking }) {
         <div>
           <HiOutlineHomeModern />
           <p>
-            {numNights} nights in Cabin <span>{cabinName}</span>
+            {numNights} {t("nights in Cabin")} <span>{cabinName}</span>
           </p>
         </div>
-
+        {/*! HATALI TODAY OLMADI........................................ */}
         <p>
           {format(new Date(startDate), "EEE, MMM dd yyyy")} (
           {isToday(new Date(startDate))
-            ? "Today"
+            ? t("Today")
             : formatDistanceFromNow(startDate)}
           ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
         </p>
@@ -153,7 +153,8 @@ function BookingDataBox({ booking }) {
         <Guest>
           {countryFlag && <Flag src={countryFlag} alt={`Flag of ${country}`} />}
           <p>
-            {guestName} {numGuests > 1 ? `+ ${numGuests - 1} guests` : ""}
+            {guestName}{" "}
+            {numGuests > 1 ? `+ ${numGuests - 1} ${t("guests")}` : ""}
           </p>
           <span>&bull;</span>
           <p>{email}</p>
@@ -166,7 +167,7 @@ function BookingDataBox({ booking }) {
         {observations && (
           <DataItem
             icon={<HiOutlineChatBubbleBottomCenterText />}
-            label="Observations"
+            label={t("Observations")}
           >
             {observations}
           </DataItem>
@@ -194,7 +195,9 @@ function BookingDataBox({ booking }) {
       </Section>
 
       <Footer>
-        <p>Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}</p>
+        <p>
+          {t("Booked")} {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
+        </p>
       </Footer>
     </StyledBookingDataBox>
   );

@@ -4,6 +4,7 @@ import Tag from "../../ui/Tag";
 import Button from "../../ui/Button";
 import CheckoutButton from "./CheckoutButton";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const StyledTodayItem = styled.li`
   display: grid;
@@ -24,11 +25,12 @@ const Guest = styled.div`
   font-weight: 500;
 `;
 function TodayItem({ activity }) {
+  const { t } = useTranslation();
   const { id, status, guests, numNights } = activity;
   return (
     <StyledTodayItem>
-      {status === "unconfirmed" && <Tag type="green">Arriving</Tag>}
-      {status === "checked-in" && <Tag type="blue">Departing</Tag>}
+      {status === "unconfirmed" && <Tag type="green">{t("Arriving")}</Tag>}
+      {status === "checked-in" && <Tag type="blue">{t("Departing")}</Tag>}
 
       <Flag src={guests.countryFlag} alt={`Flag of ${guests.country}`} />
       <Guest>{guests.fullName}</Guest>
@@ -41,7 +43,7 @@ function TodayItem({ activity }) {
           as={Link}
           to={`/checkin/${id}`}
         >
-          Check in
+          {t("Check in")}
         </Button>
       )}
       {status === "checked-in" && <CheckoutButton bookingId={id} />}

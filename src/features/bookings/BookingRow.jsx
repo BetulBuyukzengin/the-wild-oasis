@@ -90,9 +90,9 @@ function BookingRow({
       <Stacked>
         <span>
           {isToday(new Date(startDate))
-            ? "Today"
+            ? t("Today")
             : formatDistanceFromNow(startDate)}{" "}
-          &rarr; {numNights} night stay
+          &rarr; {numNights} {t("night stay")}
         </span>
         <span>
           {format(new Date(startDate), "MMM dd yyyy")} &mdash;{" "}
@@ -115,7 +115,7 @@ function BookingRow({
               {t("See details")}
             </Menus.Button>
 
-            {status === "unconfirmed" && (
+            {status === t("unconfirmed") && (
               <Menus.Button
                 icon={<HiArrowDownOnSquare />}
                 onClick={() => navigate(`/checkin/${bookingId}`)}

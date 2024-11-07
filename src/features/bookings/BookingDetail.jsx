@@ -18,6 +18,7 @@ import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import { useDeleteBooking } from "./useDeleteBooking";
 import Empty from "../../ui/Empty";
+import { useTranslation } from "react-i18next";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -31,7 +32,7 @@ function BookingDetail() {
   const navigate = useNavigate();
   const { checkout, isCheckingOut } = useCheckout();
   const { deleteBooking, isDeleting } = useDeleteBooking();
-
+  const { t } = useTranslation();
   if (isLoading) return <Spinner />;
   if (!booking) return <Empty resourceName="booking" />;
   const { status, id: bookingId } = booking;
@@ -46,10 +47,12 @@ function BookingDetail() {
     <>
       <Row type="horizontal">
         <HeadingGroup>
-          <Heading as="h1">Booking #{bookingId}</Heading>
+          <Heading as="h1">
+            {t("Booking")} #{bookingId}
+          </Heading>
           <Tag type={statusToTagName[status]}>{status?.replace("-", " ")}</Tag>
         </HeadingGroup>
-        <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
+        <ButtonText onClick={moveBack}>&larr; {t("Back")}</ButtonText>
       </Row>
 
       <BookingDataBox booking={booking} />
@@ -57,7 +60,7 @@ function BookingDetail() {
       <ButtonGroup>
         {status === "unconfirmed" && (
           <Button onClick={() => navigate(`/checkin/${bookingId}`)}>
-            Check in
+            {t("Check in")}
           </Button>
         )}
 
@@ -67,12 +70,12 @@ function BookingDetail() {
             onClick={() => checkout(bookingId)}
             disabled={isCheckingOut}
           >
-            Check out
+            {t("Check out")}
           </Button>
         )}
         <Modal>
           <Modal.Open opens="delete">
-            <Button variation="danger">Delete Booking</Button>
+            <Button variation="danger">{t("Delete Booking")}</Button>
           </Modal.Open>
           <Modal.Window name="delete">
             <ConfirmDelete
@@ -90,7 +93,7 @@ function BookingDetail() {
         </Modal>
 
         <Button variation="secondary" onClick={moveBack}>
-          Back
+          {t("Back")}
         </Button>
       </ButtonGroup>
     </>

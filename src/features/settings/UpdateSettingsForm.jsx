@@ -5,6 +5,7 @@ import Input from "../../ui/Input";
 import { useSettings } from "./useSettings";
 import Spinner from "../../ui/Spinner";
 import { useUpdateSetting } from "./useUpdateSetting";
+import { useTranslation } from "react-i18next";
 
 function UpdateSettingsForm() {
   const {
@@ -19,6 +20,7 @@ function UpdateSettingsForm() {
     // Get an unreadable error, added {} to prevent this.
   } = useSettings();
   const { isUpdating, updateSetting } = useUpdateSetting();
+  const { t } = useTranslation();
 
   if (isLoading) return <Spinner />;
 
@@ -30,7 +32,7 @@ function UpdateSettingsForm() {
 
   return (
     <Form>
-      <FormRow label="Minimum nights/booking" updateHotel>
+      <FormRow label={t("Minimum nights / booking")} updateHotel>
         <Input
           type="number"
           id="min-nights"
@@ -39,7 +41,7 @@ function UpdateSettingsForm() {
           onBlur={(e) => handleUpdate(e, "minBookingLength")}
         />
       </FormRow>
-      <FormRow label="Maximum nights/booking" updateHotel>
+      <FormRow label={t("Maximum nights / booking")} updateHotel>
         <Input
           type="number"
           id="max-nights"
@@ -48,7 +50,7 @@ function UpdateSettingsForm() {
           onBlur={(e) => handleUpdate(e, "maxBookingLength")}
         />
       </FormRow>
-      <FormRow label="Maximum guests/booking" updateHotel>
+      <FormRow label={t("Maximum guests / booking")} updateHotel>
         <Input
           type="number"
           id="max-guests"
@@ -57,7 +59,7 @@ function UpdateSettingsForm() {
           onBlur={(e) => handleUpdate(e, "maxGuestsPerBooking")}
         />
       </FormRow>
-      <FormRow label="Breakfast price" updateHotel>
+      <FormRow label={t("Breakfast price")} updateHotel>
         <Input
           type="number"
           id="breakfast-price"

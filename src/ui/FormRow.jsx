@@ -29,7 +29,7 @@ const StyledFormRow = styled.div`
   }
   @media (max-width: 48em) {
     grid-template-columns: ${(props) =>
-      props.updateHotel ? "9rem 1fr 1.2fr" : "6rem 1fr 1.2fr"};
+      props.updateHotel ? "9rem 1fr 1.2fr" : "1fr 1fr"};
     justify-content: ${(props) =>
       props.passwordForm ? "flex-start!important" : "flex-end"};
   }

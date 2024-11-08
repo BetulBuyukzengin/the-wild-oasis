@@ -22,19 +22,25 @@ import { useCheckout } from "../check-in-out/useCheckout";
 import Spinner from "../../ui/Spinner";
 import { useDeleteBooking } from "./useDeleteBooking";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "usehooks-ts";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--color-grey-600);
   font-family: "Sono";
+  width: 7rem;
+
+  @media (max-width: 48em) {
+    font-size: 1rem;
+  }
 `;
 
 const Stacked = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-
+  width: 22rem; //???????????????? Bak
   & span:first-child {
     font-weight: 500;
   }
@@ -42,12 +48,26 @@ const Stacked = styled.div`
   & span:last-child {
     color: var(--color-grey-500);
     font-size: 1.2rem;
+    @media (max-width: 48em) {
+      font-size: 1rem;
+    }
+  }
+  @media (max-width: 48em) {
+    width: 18rem;
+    text-align: center;
   }
 `;
 
 const Amount = styled.div`
   font-family: "Sono";
   font-weight: 500;
+`;
+const StyledTagAmount = styled.span`
+  display: flex;
+  gap: 5rem;
+
+  @media (max-width: 48em) {
+  }
 `;
 
 function BookingRow({
@@ -71,7 +91,10 @@ function BookingRow({
   const guestName = guests?.fullName || t("Unknown guest");
   const email = guests?.email || t("No email provided");
   const cabinName = cabins?.name || t("Unknown cabin");
-
+  // console.log(startDate);
+  const smallScreenStartDate = startDate?.slice(0, 10);
+  const smallScreenEndDate = endDate?.slice(0, 10);
+  const isSmallScreen = useMediaQuery("(max-width:48em)");
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
@@ -95,14 +118,29 @@ function BookingRow({
           &rarr; {numNights} {t("night stay")}
         </span>
         <span>
-          {format(new Date(startDate), "MMM dd yyyy")} &mdash;{" "}
-          {format(new Date(endDate), "MMM dd yyyy")}
+          {!isSmallScreen ? (
+            <>
+              {format(new Date(startDate), "MMM dd yyyy")} &mdash;{" "}
+              {format(new Date(endDate), "MMM dd yyyy")}{" "}
+            </>
+          ) : (
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <span>{smallScreenStartDate}</span>
+              <span>{smallScreenEndDate}</span>
+            </div>
+          )}
         </span>
       </Stacked>
-
-      <Tag type={statusToTagName[status]}>{status?.replace("-", " ")}</Tag>
-
-      <Amount>{formatCurrency(totalPrice)}</Amount>
+      <StyledTagAmount>
+        <Tag type={statusToTagName[status]}>{status?.replace("-", " ")}</Tag>
+        <Amount>{formatCurrency(totalPrice)}</Amount>
+      </StyledTagAmount>
 
       <Modal>
         <Menus.Menu>

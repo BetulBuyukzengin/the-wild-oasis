@@ -13,6 +13,10 @@ const StyledSidebar = styled.aside`
   border-right: 1px solid var(--color-grey-100);
   grid-row: 1 / -1;
   position: relative;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 `;
 function SideBar() {
   const [isOpen, setOpen] = useState(false);

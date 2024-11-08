@@ -35,7 +35,6 @@ function HamburgerDrawer({ children, setOpen, open, toggleDrawer }) {
           gap: "1rem",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
         }}
         lockBackgroundScroll
         open={open}

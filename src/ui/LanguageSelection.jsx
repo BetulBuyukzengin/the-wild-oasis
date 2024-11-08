@@ -7,10 +7,17 @@ const StyledContent = styled.div`
   gap: 1rem;
 `;
 const StyledButton = styled.button`
-  background-color: var(--color-grey-200);
-  border-color: var(--color-grey-200);
-  border-radius: 5px;
-  padding: 1px 8px;
+  background-color: var(--color-grey-0);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+  font-size: 1.4rem;
+  padding: 0.44rem 0.8rem;
+  transition: all 0.3s;
+  &:hover:not(:disabled) {
+    background-color: var(--color-brand-600);
+    color: var(--color-brand-50);
+  }
 `;
 function LanguageSelection() {
   const handleChangeLang = (lang) => {

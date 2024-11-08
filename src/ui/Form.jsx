@@ -5,15 +5,14 @@ const Form = styled.form`
     props.type === "regular" &&
     css`
       padding: 2.4rem 4rem;
+      width: 95%;
 
       /* Box */
       background-color: var(--color-grey-0);
       border: 1px solid var(--color-grey-100);
       border-radius: var(--border-radius-md);
       @media (max-width: 48em) {
-        /* width: 41rem;
-        padding: 1.4rem 2rem; */
-        width: 27rem;
+        /* width: 27rem; */
         padding: 1.4rem 1rem;
         grid-template-columns: 1fr;
         display: grid;

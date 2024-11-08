@@ -34,6 +34,9 @@ const StyledHeader = styled(CommonRow)`
     font-size: 1.2rem;
     padding: 1.6rem 1rem;
   }
+  @media (max-width: 31.25em) {
+    font-size: 1rem;
+  }
 `;
 
 const StyledRow = styled(CommonRow)`
@@ -43,8 +46,8 @@ const StyledRow = styled(CommonRow)`
     border-bottom: 1px solid var(--color-grey-100);
   }
   @media (max-width: 48em) {
-    overflow-x: scroll;
     font-size: 1rem;
+    text-align: center;
   }
 `;
 
@@ -52,6 +55,7 @@ const StyledBody = styled.section`
   margin: 0.4rem 0;
   @media (max-width: 48em) {
     font-size: 1rem;
+    overflow-x: scroll;
   }
 `;
 

@@ -26,7 +26,6 @@ const FilterButton = styled.button`
   border-radius: var(--border-radius-sm);
   font-weight: 500;
   font-size: 1.4rem;
-  /* To give the same height as select */
   padding: 0.44rem 0.8rem;
   transition: all 0.3s;
 
@@ -36,6 +35,7 @@ const FilterButton = styled.button`
   }
   @media (max-width: 48em) {
     font-size: 1.2rem;
+    padding: 0.2rem 0.6rem;
   }
 `;
 function Filter({ filterField, options }) {
@@ -57,19 +57,12 @@ function Filter({ filterField, options }) {
         <FilterButton
           key={option.value}
           onClick={() => handleClick(option.value)}
-          // active={option.value === currentFilter}
           active={option.value === currentFilter ? "true" : undefined}
           disabled={option.value === currentFilter}
         >
           {option.label}
         </FilterButton>
       ))}
-      {/* <FilterButton onClick={() => handleClick("no-discount")}>
-        No discount
-      </FilterButton>
-      <FilterButton onClick={() => handleClick("with-discount")}>
-        With discount
-      </FilterButton> */}
     </StyledFilter>
   );
 }

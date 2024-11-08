@@ -15,7 +15,7 @@ const StyledAppLayout = styled.div`
 `;
 const Main = styled.main`
   background-color: var(--color-grey-50);
-  overflow: scroll;
+  overflow-y: scroll;
   padding: 4rem 4.8rem 6.4rem;
   @media (max-width: 48em) {
     padding: 4rem 2rem;

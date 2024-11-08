@@ -115,9 +115,6 @@ const resources = {
       "Total sales": "Toplam satışlar",
       "Extras sales": "Ekstra satışlar",
       "Sales from": "Satış tarih aralığı",
-      Departing: "Ayrılıyor",
-      "Unknown guest": "Bilinmeyen ziyaretçi",
-      "nights in Cabin": "gece - bungalov",
     },
   },
 };

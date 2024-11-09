@@ -23,13 +23,14 @@ import Spinner from "../../ui/Spinner";
 import { useDeleteBooking } from "./useDeleteBooking";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "usehooks-ts";
+import i18n from "../../i18n";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--color-grey-600);
   font-family: "Sono";
-  width: 7rem;
+  width: 100%;
 
   @media (max-width: 48em) {
     font-size: 1rem;
@@ -100,6 +101,12 @@ function BookingRow({
     "checked-in": "green",
     "checked-out": "silver",
   };
+
+  const translatedStatusName = t(`statusNames.${status}`);
+  const statusTr = t("{{status}}", {
+    status: translatedStatusName,
+  });
+  const statusEn = t("{{status}}", { status });
   if (isCheckingOut) return <Spinner />;
 
   return (
@@ -138,7 +145,11 @@ function BookingRow({
         </span>
       </Stacked>
       <StyledTagAmount>
-        <Tag type={statusToTagName[status]}>{status?.replace("-", " ")}</Tag>
+        <Tag type={statusToTagName[status]}>
+          {i18n.language === "tr"
+            ? statusTr?.replace("-", " ")
+            : statusEn?.replace("-", " ")}
+        </Tag>
         <Amount>{formatCurrency(totalPrice)}</Amount>
       </StyledTagAmount>
 

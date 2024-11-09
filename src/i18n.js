@@ -1,5 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import { tr, enUS } from "date-fns/locale";
 
 const resources = {
   tr: {
@@ -44,10 +45,6 @@ const resources = {
       Cancel: "İptal et",
       "Regular price should be at least 1!": "Normal fiyat en az 1 olmalıdır!",
       "Capacity should be at least 1!": "Kapasite en az 1 olmalıdır!",
-      "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.":
-        "Bu {{resourceName}} kaynağını kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
-
-      "Delete {{resourceName}}": "{{resourceName}} Delete", // resource name dinamik geliyor
       "All bookings": "Tüm Rezervasyonlar",
       "Checked in": "Giriş yapıldı",
       "Checked out": "Çıkış yapıldı",
@@ -56,10 +53,10 @@ const resources = {
       "Delete Booking": "Rezervasyonu sil",
       Unconfirmed: "Onaylanmamış",
       unconfirmed: "ONAYLANMAMIŞ",
-      "Sort by date (recent first)": "Tarihe göre sırala (en yeniye )",
+      "Sort by date (recent first)": "Tarihe göre sırala (en yeni )",
       "Sort by date (earlier first)": "Tarihe göre sırala (en eski)",
-      "Sort by amount (high first)": "Tutara göre sırala (ilk yüksek)",
-      "Sort by amount (low first)": "Tutara göre sırala (ilk düşük)",
+      "Sort by amount (high first)": "Tutara göre sırala (en yüksek)",
+      "Sort by amount (low first)": "Tutara göre sırala (en düşük)",
       Guest: "Ziyaretçi",
       Dates: "Tarihler",
       Status: "Durum",
@@ -115,10 +112,69 @@ const resources = {
       "Total sales": "Toplam satışlar",
       "Extras sales": "Ekstra satışlar",
       "Sales from": "Satış tarih aralığı",
+      Departing: "Ayrılıyor",
+      "Unknown guest": "Bilinmeyen ziyaretçi",
+      cabin: "bungalov",
+      breakfast: "kahvaltı",
+      "I confirm that {{guestName}} has paid the total amount of {{totalAmount}}":
+        "{{guestName}}'nın toplam {{totalAmount}} tutarında ödeme yaptığını onaylıyorum.",
+      "I confirm that {{guestName}} has paid the total amount of {{totalAmount}} ({{baseAmount}} + {{breakfastAmount}})":
+        "{{guestName}}'nın toplam {{totalAmount}} tutarında ödeme yaptığını onaylıyorum ({{baseAmount}} + {{breakfastAmount}}).",
+      // checkın sayfasına bak-confirmDelete sayfasına bak
+      // choose file update your account ve cabın bı seyde
+      "Want to add breakfast for": "",
+      Observations: "",
+      "nights in Cabin": "gece - bungalov",
+      //
+      // "Delete {{resourceName}}": "{{resourceName}} Sil",
+      // resourceNames: {
+      //   cabin: "Bungalov",
+      //   booking: "Rezervasyon",
+      // },
+      //
+
+      "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.":
+        "Bu {{resourceName}} kaynağını kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+      "Delete {{resourceName}}": "{{resourceName}} Sil",
+      resourceNames: {
+        cabin: "Bungalov",
+        booking: "Rezervasyon",
+      },
+
+      "{{status}}": "{{status}}",
+      statusNames: {
+        "checked-out": "Kontrol edildi",
+        unconfirmed: "Onaylanmamış",
+        "checked-in": "Giriş yapıldı",
+      },
+      "Last 7 days": "Son 7 gün",
+      "Last 30 days": "Son 30 gün",
+      "Last 90 days": "Son 90 gün",
+      "No activity today...": "Bugün aktivite yok...",
+      "Stay duration summary": "Konaklama süresi özeti",
+    },
+  },
+  en: {
+    translation: {
+      "Delete {{resourceName}}": "Delete {{resourceName}}",
+      "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.":
+        "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.",
+      resourceNames: {
+        cabin: "cabin",
+        booking: "booking",
+      },
+      "{{status}}": "{{status}}",
+      statusNames: {
+        "checked-out": "checked-out",
+        unconfirmed: "unconfirmed",
+        "checked-in": "checked-in",
+      },
     },
   },
 };
-
+export const getDateLocale = () => {
+  return i18n.language === "tr" ? tr : enUS;
+};
 i18n.use(initReactI18next).init({
   resources,
   lng: "en",

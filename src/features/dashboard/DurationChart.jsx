@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import { useDarkMode } from "../../context/DarkModeContext";
 import { useMediaQuery } from "usehooks-ts";
+import { useTranslation } from "react-i18next";
 
 const ChartBox = styled.div`
   /* Box */
@@ -30,6 +31,7 @@ const ChartBox = styled.div`
   }
   @media (max-width: 48em) {
     grid-column: 1;
+    padding: 1.4rem 1.2rem;
   }
 `;
 
@@ -148,22 +150,29 @@ function prepareData(startData, stays) {
 function DurationChart({ confirmedStays }) {
   const { isDarkMode } = useDarkMode();
   const startData = isDarkMode ? startDataDark : startDataLight;
+  const { t } = useTranslation();
   const data = prepareData(startData, confirmedStays);
   const isSmallScreen = useMediaQuery("(max-width:48em)");
+  const isMediumScreen = useMediaQuery("(max-width:84.37em)");
 
   return (
     <ChartBox>
-      <Heading as={isSmallScreen ? "h5" : "h2"}>Stay duration summary</Heading>
-      <ResponsiveContainer width="100%" height={240}>
+      <Heading as={isSmallScreen ? "h5" : "h2"}>
+        {t("Stay duration summary")}
+      </Heading>
+      <ResponsiveContainer
+        width="100%"
+        height={isSmallScreen ? 220 : isMediumScreen ? 190 : 240}
+      >
         <PieChart>
           <Pie
             data={data}
             nameKey="duration"
             dataKey="value"
             innerRadius={85}
-            outerRadius={110}
-            cx="40%"
-            cy="50%"
+            outerRadius={isSmallScreen ? 90 : isMediumScreen ? 95 : 110}
+            cx={isSmallScreen ? "60%" : "50%"}
+            cy={isSmallScreen ? "40%" : "50%"}
             paddingAngle={3}
           >
             {data.map((entry) => (
@@ -176,11 +185,11 @@ function DurationChart({ confirmedStays }) {
           </Pie>
           <Tooltip />
           <Legend
-            verticalAlign="middle"
+            verticalAlign={isSmallScreen ? "bottom" : "middle"}
             align="right"
             width="30%"
             layout="vertical"
-            iconSize={15}
+            iconSize={isSmallScreen ? "5" : "15"}
             iconType="circle"
           />
         </PieChart>

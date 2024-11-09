@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Button from "./Button";
 import Heading from "./Heading";
 import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 const StyledConfirmDelete = styled.div`
   width: 40rem;
@@ -30,23 +31,34 @@ const StyledConfirmDelete = styled.div`
 
 function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
   const { t } = useTranslation();
+  const translatedResourceName = t(`resourceNames.${resourceName}`);
+
+  const messageTr = t("Delete {{resourceName}}", {
+    resourceName: translatedResourceName,
+  });
+  const messageEn = t("Delete {{resourceName}}", { resourceName });
+  const worningTr = t(
+    "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.",
+    {
+      resourceName: translatedResourceName,
+    },
+    { resourceName }
+  );
+  const worningEn = t(
+    "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.",
+    { resourceName }
+  );
   return (
     <StyledConfirmDelete>
       <Heading as="h2">
-        {t("Delete {{resourceName}}", { resourceName })}
+        {i18n.language === "tr" ? messageTr : messageEn}
       </Heading>
-      <p>
-        {t(
-          "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.",
-          { resourceName }
-        )}
-      </p>
+      <p>{i18n.language === "tr" ? worningTr : worningEn}</p>
 
       <div>
         <Button
           variation="secondary"
           disabled={disabled}
-          // taken from modal (clone element)
           onClick={onCloseModal}
         >
           {t("Cancel")}

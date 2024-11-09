@@ -7,10 +7,9 @@ import {
   HiOutlineCurrencyDollar,
   HiOutlineHomeModern,
 } from "react-icons/hi2";
-
+import { getDateLocale } from "../../../src/i18n.js";
 import DataItem from "../../ui/DataItem";
 import { Flag } from "../../ui/Flag";
-
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
 import { useTranslation } from "react-i18next";
 
@@ -141,11 +140,17 @@ function BookingDataBox({ booking }) {
         </div>
         {/*! HATALI TODAY OLMADI........................................ */}
         <p>
-          {format(new Date(startDate), "EEE, MMM dd yyyy")} (
+          {format(new Date(startDate), "EEE, MMM dd yyyy", {
+            locale: getDateLocale(),
+          })}{" "}
+          (
           {isToday(new Date(startDate))
             ? t("Today")
             : formatDistanceFromNow(startDate)}
-          ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
+          ) &mdash;{" "}
+          {format(new Date(endDate), "EEE, MMM dd yyyy", {
+            locale: getDateLocale(),
+          })}
         </p>
       </Header>
 
@@ -185,9 +190,9 @@ function BookingDataBox({ booking }) {
             {formatCurrency(totalPrice)}
 
             {hasBreakfast &&
-              ` (${formatCurrency(cabinPrice)} cabin + ${formatCurrency(
+              ` (${formatCurrency(cabinPrice)} ${t("cabin")} + ${formatCurrency(
                 extrasPrice
-              )} breakfast)`}
+              )} ${t("breakfast")})`}
           </DataItem>
 
           <p>{isPaid ? t("Paid") : t("Will pay at property")}</p>
@@ -196,7 +201,10 @@ function BookingDataBox({ booking }) {
 
       <Footer>
         <p>
-          {t("Booked")} {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
+          {t("Booked")}{" "}
+          {format(new Date(created_at), "EEE, MMM dd yyyy, p", {
+            locale: getDateLocale(),
+          })}
         </p>
       </Footer>
     </StyledBookingDataBox>

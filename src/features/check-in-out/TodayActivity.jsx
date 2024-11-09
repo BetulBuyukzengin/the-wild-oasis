@@ -6,6 +6,7 @@ import { useTodayActivity } from "./useTodayActivity";
 import Spinner from "../../ui/Spinner";
 import TodayItem from "./TodayItem";
 import { useMediaQuery } from "usehooks-ts";
+import { useTranslation } from "react-i18next";
 
 const StyledToday = styled.div`
   background-color: var(--color-grey-0);
@@ -46,11 +47,12 @@ const NoActivity = styled.p`
 
 function TodayActivity() {
   const { activities, isLoading } = useTodayActivity();
+  const { t } = useTranslation();
   const isSmallScreen = useMediaQuery("(max-width:48em)");
   return (
     <StyledToday>
       <Row type="horizontal">
-        <Heading as={isSmallScreen ? "h5" : "h2"}>Today</Heading>
+        <Heading as={isSmallScreen ? "h5" : "h2"}>{t("Today")}</Heading>
       </Row>
 
       {!isLoading ? (
@@ -61,7 +63,7 @@ function TodayActivity() {
             ))}
           </TodayList>
         ) : (
-          <NoActivity>No activity today...</NoActivity>
+          <NoActivity>{t("No activity today...")}</NoActivity>
         )
       ) : (
         <Spinner />

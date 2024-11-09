@@ -104,7 +104,7 @@ function CheckinBooking() {
           onChange={() => setConfirmPaid((confirm) => !confirm)}
           id="confirm"
         >
-          I confirm that {guests.fullName} has paid the total amount of
+          {/* I confirm that {guests.fullName} has paid the total amount of
           {!addBreakfast
             ? formatCurrency(totalPrice)
             : `
@@ -112,7 +112,26 @@ function CheckinBooking() {
            totalPrice + optionalBreakfastPrice
          )} (${formatCurrency(totalPrice)}+
          ${formatCurrency(optionalBreakfastPrice)})
-         `}
+         `} */}
+          {!addBreakfast
+            ? t(
+                "I confirm that {{guestName}} has paid the total amount of {{totalAmount}}",
+                {
+                  guestName: guests.fullName,
+                  totalAmount: formatCurrency(totalPrice),
+                }
+              )
+            : t(
+                "I confirm that {{guestName}} has paid the total amount of {{totalAmount}} ({{baseAmount}} + {{breakfastAmount}})",
+                {
+                  guestName: guests.fullName,
+                  totalAmount: formatCurrency(
+                    totalPrice + optionalBreakfastPrice
+                  ),
+                  baseAmount: formatCurrency(totalPrice),
+                  breakfastAmount: formatCurrency(optionalBreakfastPrice),
+                }
+              )}
         </Checkbox>
       </Box>
       <ButtonGroup>

@@ -7,6 +7,9 @@ const Form = styled.form`
       padding: 2.4rem 4rem;
       width: 95%;
 
+      @media (max-width: 84.37em) {
+        padding: 1rem;
+      }
       /* Box */
       background-color: var(--color-grey-0);
       border: 1px solid var(--color-grey-100);
@@ -22,9 +25,9 @@ const Form = styled.form`
   ${(props) =>
     props.type === "modal" &&
     css`
-      width: 80rem;
-      @media (max-width: 48em) {
-        width: 37rem;
+      width: 90%;
+      @media (max-width: 84.37em) {
+        width: 100%;
       }
     `}
     

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import HeaderMenu from "./HeaderMenu";
 import UserAvatar from "../features/authentication/UserAvatar";
@@ -16,8 +17,8 @@ const StyledHeader = styled.header`
     padding: 1rem 4.8rem;
   }
 `;
-function Header() {
-  const isSmallScreen = useMediaQuery("(max-width:48em)");
+function Header({ toggleDrawer }) {
+  const isSmallScreen = useMediaQuery("(max-width:84.37em)");
   return (
     <StyledHeader>
       {isSmallScreen ? (
@@ -27,7 +28,7 @@ function Header() {
       ) : (
         <>
           <UserAvatar />
-          <HeaderMenu />
+          <HeaderMenu toggleDrawer={toggleDrawer} />
           <LanguageSelection />
         </>
       )}

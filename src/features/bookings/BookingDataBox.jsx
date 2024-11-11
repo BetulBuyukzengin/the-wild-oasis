@@ -18,7 +18,6 @@ const StyledBookingDataBox = styled.section`
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
-
   overflow: hidden;
 `;
 
@@ -32,6 +31,11 @@ const Header = styled.header`
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 84.37em) {
+    flex-direction: column;
+    padding: 1rem;
+    text-align: center;
+  }
   svg {
     height: 3.2rem;
     width: 3.2rem;
@@ -54,6 +58,9 @@ const Header = styled.header`
 
 const Section = styled.section`
   padding: 3.2rem 4rem 1.2rem;
+  @media (max-width: 84.37em) {
+    padding: 1.2rem 1rem 1.2rem;
+  }
 `;
 
 const Guest = styled.div`
@@ -66,6 +73,9 @@ const Guest = styled.div`
   & p:first-of-type {
     font-weight: 500;
     color: var(--color-grey-700);
+  }
+  @media (max-width: 84.37em) {
+    flex-direction: column;
   }
 `;
 
@@ -81,7 +91,11 @@ const Price = styled.div`
     props.isPaid ? "var(--color-green-100)" : "var(--color-yellow-100)"};
   color: ${(props) =>
     props.isPaid ? "var(--color-green-700)" : "var(--color-yellow-700)"};
-
+  @media (max-width: 84.37em) {
+    padding: 0.6rem 0.2rem;
+    margin-top: 1.4rem;
+    flex-direction: column;
+  }
   & p:last-child {
     text-transform: uppercase;
     font-size: 1.4rem;
@@ -94,15 +108,38 @@ const Price = styled.div`
     color: currentColor !important;
   }
 `;
-
+const StyledDiv = styled.div`
+  @media (max-width: 84.37em) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1rem;
+  }
+`;
+const StyledP = styled.p`
+  @media (max-width: 84.37em) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 1.2rem;
+  }
+`;
 const Footer = styled.footer`
   padding: 1.6rem 4rem;
   font-size: 1.2rem;
   color: var(--color-grey-500);
   text-align: right;
+  @media (max-width: 84.37em) {
+    padding: 1.6rem 1rem;
+    text-align: center;
+  }
+`;
+const StyledGuestP = styled.p`
+  @media (max-width: 84.37em) {
+    font-size: 1.3rem;
+  }
 `;
 
-// A purely presentational component
 function BookingDataBox({ booking }) {
   const {
     created_at,
@@ -132,14 +169,13 @@ function BookingDataBox({ booking }) {
   return (
     <StyledBookingDataBox>
       <Header>
-        <div>
+        <StyledDiv>
           <HiOutlineHomeModern />
-          <p>
-            {numNights} {t("nights in Cabin")} <span>{cabinName}</span>
-          </p>
-        </div>
-        {/*! HATALI TODAY OLMADI........................................ */}
-        <p>
+          <StyledP>
+            {numNights} {t("nights in Cabin")} {cabinName}
+          </StyledP>
+        </StyledDiv>
+        <StyledP>
           {format(new Date(startDate), "EEE, MMM dd yyyy", {
             locale: getDateLocale(),
           })}{" "}
@@ -151,22 +187,22 @@ function BookingDataBox({ booking }) {
           {format(new Date(endDate), "EEE, MMM dd yyyy", {
             locale: getDateLocale(),
           })}
-        </p>
+        </StyledP>
       </Header>
 
       <Section>
         <Guest>
           {countryFlag && <Flag src={countryFlag} alt={`Flag of ${country}`} />}
-          <p>
+          <StyledGuestP>
             {guestName}{" "}
             {numGuests > 1 ? `+ ${numGuests - 1} ${t("guests")}` : ""}
-          </p>
+          </StyledGuestP>
           <span>&bull;</span>
-          <p>{email}</p>
+          <StyledGuestP>{email}</StyledGuestP>
           <span>&bull;</span>
-          <p>
+          <StyledGuestP>
             {t("National ID")} {nationalID}
-          </p>
+          </StyledGuestP>
         </Guest>
 
         {observations && (

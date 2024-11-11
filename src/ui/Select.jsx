@@ -16,6 +16,7 @@ const StyledSelect = styled.select`
   box-shadow: var(--shadow-sm);
   @media (max-width: 48em) {
     font-size: 1.2rem;
+    width: 90%;
   }
 `;
 //! use rest operation

@@ -10,6 +10,7 @@ const StyledFilter = styled.div`
   padding: 0.4rem;
   display: flex;
   gap: 0.4rem;
+  justify-content: center;
 `;
 
 const FilterButton = styled.button`

@@ -11,13 +11,18 @@ const StyledHeaderMenu = styled.ul`
   justify-content: center;
 `;
 
-export default function HeaderMenu() {
+export default function HeaderMenu({ toggleDrawer }) {
   const navigate = useNavigate();
 
   return (
     <StyledHeaderMenu>
       <li>
-        <ButtonIcon onClick={() => navigate("/account")}>
+        <ButtonIcon
+          onClick={() => {
+            toggleDrawer();
+            navigate("/account");
+          }}
+        >
           <HiOutlineUser />
         </ButtonIcon>
       </li>

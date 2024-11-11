@@ -1,4 +1,4 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { useMediaQuery } from "usehooks-ts";
 import HamburgerDrawer from "./HamburgerDrawer";
@@ -18,11 +18,11 @@ const StyledSidebar = styled.aside`
   display: flex;
   flex-direction: column;
 `;
-function SideBar() {
-  const [isOpen, setOpen] = useState(false);
-  const toggleDrawer = () => setOpen((open) => !open);
+function SideBar({ isOpen, setOpen, toggleDrawer }) {
+  // const [isOpen, setOpen] = useState(false);
+  // const toggleDrawer = () => setOpen((open) => !open);
   // const isSmallScreen = useMediaQuery("(max-width:48em)");
-  const isSmallScreen = useMediaQuery("(max-width:48em)");
+  const isSmallScreen = useMediaQuery("(max-width:84.37em)");
 
   return (
     <>
@@ -34,13 +34,13 @@ function SideBar() {
         >
           <Logo />
           <MainNav toggleDrawer={toggleDrawer} />
-          <HeaderMenu />
+          <HeaderMenu toggleDrawer={toggleDrawer} />
           <LanguageSelection />
         </HamburgerDrawer>
       ) : (
         <StyledSidebar>
           <Logo />
-          <MainNav />
+          <MainNav toggleDrawer={toggleDrawer} />
         </StyledSidebar>
       )}
     </>

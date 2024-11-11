@@ -65,7 +65,7 @@ function CabinRow({ cabin }) {
 
   function handleDuplicate() {
     createCabin({
-      name: `Copy of ${name}`,
+      name: `${t("Copy of")} ${name}`,
       maxCapacity,
       regularPrice,
       discount,

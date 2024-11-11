@@ -5,9 +5,11 @@ import Button from "./Button";
 import Heading from "./Heading";
 import { useTranslation } from "react-i18next";
 import i18n from "../i18n";
+import { useMediaQuery } from "usehooks-ts";
 
 const StyledConfirmDelete = styled.div`
-  width: 40rem;
+  width: 100%;
+  /* width: 40rem; */
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -16,22 +18,27 @@ const StyledConfirmDelete = styled.div`
     color: var(--color-grey-500);
     margin-bottom: 1.2rem;
   }
-
+  @media (max-width: 48em) {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
   & div {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 1.2rem;
-  }
-  @media (max-width: 48em) {
-    width: 35rem;
-
-    padding: 1.2rem 1rem;
+    width: 100%;
+    @media (max-width: 84.37em) {
+      gap: 4rem;
+      justify-content: center;
+    }
   }
 `;
 
 function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
   const { t } = useTranslation();
   const translatedResourceName = t(`resourceNames.${resourceName}`);
+  const isSmallScreen = useMediaQuery("(max-width:84.37em)");
 
   const messageTr = t("Delete {{resourceName}}", {
     resourceName: translatedResourceName,
@@ -50,7 +57,7 @@ function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
   );
   return (
     <StyledConfirmDelete>
-      <Heading as="h2">
+      <Heading as={isSmallScreen ? "h3" : "h2"}>
         {i18n.language === "tr" ? messageTr : messageEn}
       </Heading>
       <p>{i18n.language === "tr" ? worningTr : worningEn}</p>

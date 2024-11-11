@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import SideBar from "./SideBar";
 import styled from "styled-components";
+import { useState } from "react";
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -9,7 +10,7 @@ const StyledAppLayout = styled.div`
   grid-template-rows: auto 1fr;
   height: 100vh;
 
-  @media (max-width: 48em) {
+  @media (max-width: 84.37em) {
     grid-template-columns: none;
   }
 `;
@@ -32,10 +33,12 @@ const Container = styled.div`
 `;
 
 function AppLayout() {
+  const [isOpen, setOpen] = useState(false);
+  const toggleDrawer = () => setOpen((open) => !open);
   return (
     <StyledAppLayout>
-      <Header />
-      <SideBar />
+      <Header toggleDrawer={toggleDrawer} />
+      <SideBar toggleDrawer={toggleDrawer} isOpen={isOpen} setOpen={setOpen} />
       <Main>
         <Container>
           <Outlet />

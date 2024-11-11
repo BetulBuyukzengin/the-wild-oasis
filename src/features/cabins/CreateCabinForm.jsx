@@ -33,6 +33,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
     // mutate(data);
+
     if (isEditSession)
       editCabin(
         { newCabinData: { ...data, image }, id: editId },
@@ -56,14 +57,9 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
         }
       );
   }
-  function onError(errors) {
-    throw new Error(errors);
-  }
+
   return (
-    <Form
-      onSubmit={handleSubmit(onSubmit, onError)}
-      type={onCloseModal ? "modal" : ""}
-    >
+    <Form onSubmit={handleSubmit(onSubmit)} type={onCloseModal ? "modal" : ""}>
       <FormRow label={t("Cabin name")} error={errors?.name?.message}>
         <Input
           type="text"

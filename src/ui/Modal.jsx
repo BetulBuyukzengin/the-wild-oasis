@@ -24,6 +24,16 @@ const StyledModal = styled.div`
   box-shadow: var(--shadow-lg);
   padding: 3.2rem 4rem;
   transition: all 0.5s;
+  max-height: 95dvh;
+  min-height: 60dvh;
+  width: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 84.37em) {
+    overflow-y: scroll;
+    /* width: 50%; */
+  }
 `;
 
 const Overlay = styled.div`
@@ -62,6 +72,10 @@ const Button = styled.button`
     color: var(--color-grey-500);
   }
 `;
+const StyledDiv = styled.div`
+  padding-bottom: 2rem;
+  max-height: 76dvh;
+`;
 //! Compound Component
 const ModalContext = createContext();
 export default function Modal({ children }) {
@@ -93,7 +107,7 @@ function Window({ children, name }) {
           <HiXMark />
         </Button>
         {/*   Computed component style edit */}
-        <div>{cloneElement(children, { onCloseModal: close })}</div>
+        <StyledDiv>{cloneElement(children, { onCloseModal: close })}</StyledDiv>
       </StyledModal>
     </Overlay>,
     // document.querySelector

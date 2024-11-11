@@ -28,8 +28,10 @@ const StyledFormRow = styled.div`
     gap: 1.2rem;
   }
   @media (max-width: 48em) {
+    gap: 1rem;
+
     grid-template-columns: ${(props) =>
-      props.updateHotel ? "9rem 1fr 1.2fr" : "1fr 1fr"};
+      props.updateHotel ? "9rem 1fr 1.2fr" : "1fr "};
     justify-content: ${(props) =>
       props.passwordForm ? "flex-start!important" : "flex-end"};
   }
@@ -44,6 +46,9 @@ const Label = styled.label`
 const Error = styled.span`
   font-size: 1.4rem;
   color: var(--color-red-700);
+  @media (max-width: 48em) {
+    font-size: 1.2rem;
+  }
 `;
 
 function FormRow({ label, error, children, passwordForm, updateHotel }) {

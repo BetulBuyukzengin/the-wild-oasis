@@ -15,6 +15,7 @@ import {
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 import { useMediaQuery } from "usehooks-ts";
 import { useTranslation } from "react-i18next";
+import { getDateLocale } from "../../i18n";
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
 
@@ -59,7 +60,7 @@ const StyledSalesChart = styled(DashboardBox)`
 
 function SalesChart({ bookings, numDays }) {
   const { isDarkMode } = useDarkMode();
-  const isSmallScreen = useMediaQuery("(max-width:48em)");
+  const isSmallScreen = useMediaQuery("(max-width:84.37em)");
   const { t } = useTranslation();
   const allDates = eachDayOfInterval({
     start: subDays(new Date(), numDays - 1),
@@ -67,7 +68,9 @@ function SalesChart({ bookings, numDays }) {
   });
   const data = allDates.map((date) => {
     return {
-      label: format(date, "MMM dd"),
+      label: format(date, "MMM dd", {
+        locale: getDateLocale(),
+      }),
       totalSales: bookings
         .filter((booking) => isSameDay(date, new Date(booking.created_at)))
         .reduce((acc, cur) => acc + cur.totalPrice, 0),
@@ -94,15 +97,17 @@ function SalesChart({ bookings, numDays }) {
   return (
     <StyledSalesChart>
       <Heading as={isSmallScreen ? "h5" : "h2"}>
-        {t("Sales from")} {format(allDates.at(0), "MMM dd yyyy")} &mdash;
-        {format(allDates.at(-1), "MMM dd yyyy")}
+        {t("Sales from")}{" "}
+        {format(allDates.at(0), "MMM dd yyyy", {
+          locale: getDateLocale(),
+        })}{" "}
+        &mdash;
+        {format(allDates.at(-1), "MMM dd yyyy", {
+          locale: getDateLocale(),
+        })}
       </Heading>
 
-      <ResponsiveContainer
-        height={isSmallScreen ? 200 : 300}
-        width="100%"
-        style={{ fontSize: `${isSmallScreen ? "1.2rem" : "2rem"}` }}
-      >
+      <ResponsiveContainer width="100%" height={isSmallScreen ? 200 : 250}>
         <AreaChart data={data}>
           <XAxis
             dataKey="label"

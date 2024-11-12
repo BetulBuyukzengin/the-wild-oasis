@@ -104,15 +104,6 @@ function CheckinBooking() {
           onChange={() => setConfirmPaid((confirm) => !confirm)}
           id="confirm"
         >
-          {/* I confirm that {guests.fullName} has paid the total amount of
-          {!addBreakfast
-            ? formatCurrency(totalPrice)
-            : `
-         ${formatCurrency(
-           totalPrice + optionalBreakfastPrice
-         )} (${formatCurrency(totalPrice)}+
-         ${formatCurrency(optionalBreakfastPrice)})
-         `} */}
           {!addBreakfast
             ? t(
                 "I confirm that {{guestName}} has paid the total amount of {{totalAmount}}",

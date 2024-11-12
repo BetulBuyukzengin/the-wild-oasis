@@ -120,19 +120,11 @@ const resources = {
         "{{guestName}}'nın toplam {{totalAmount}} tutarında ödeme yaptığını onaylıyorum.",
       "I confirm that {{guestName}} has paid the total amount of {{totalAmount}} ({{baseAmount}} + {{breakfastAmount}})":
         "{{guestName}}'nın toplam {{totalAmount}} tutarında ödeme yaptığını onaylıyorum ({{baseAmount}} + {{breakfastAmount}}).",
-      // checkın sayfasına bak-confirmDelete sayfasına bak
-      // choose file update your account ve cabın bı seyde
       "Want to add breakfast for": "",
       Observations: "",
       "nights in Cabin": "gece - bungalov",
-      //
-      // "Delete {{resourceName}}": "{{resourceName}} Sil",
-      // resourceNames: {
-      //   cabin: "Bungalov",
-      //   booking: "Rezervasyon",
-      // },
-      //
-
+      "No file choose": "Dosya seçilmedi",
+      "Choose file": "Dosya Seç",
       "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.":
         "Bu {{resourceName}} kaynağını kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
       "Delete {{resourceName}}": "{{resourceName}} Sil",
@@ -140,7 +132,10 @@ const resources = {
         cabin: "Bungalov",
         booking: "Rezervasyon",
       },
-
+      "{{fileName}}": "{{fileName}}",
+      fileStatus: {
+        "No file choose": "Dosya seçilmedi",
+      },
       "{{status}}": "{{status}}",
       statusNames: {
         "checked-out": "Kontrol edildi",
@@ -188,7 +183,7 @@ export const getDateLocale = () => {
 i18n.use(initReactI18next).init({
   resources,
   lng: "en",
-  fallbackLng: "en", // yedek dil
+  fallbackLng: "en", 
   interpolation: {
     escapeValue: false,
   },

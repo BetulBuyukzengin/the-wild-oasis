@@ -65,7 +65,6 @@ export default function Modal({ children, onClose }) {
         <div>{children}</div>
       </StyledModal>
     </Overlay>,
-    // document.querySelector
     document.body
   );
 }

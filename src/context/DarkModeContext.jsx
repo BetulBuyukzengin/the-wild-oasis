@@ -6,7 +6,6 @@ const DarkModeContext = createContext();
 
 function DarkModeProvider({ children }) {
   // useLocalStorageState custom hook instead of useState
-  // const [isDarkMode, setIsDarkMode] = useLocalStorageState(false, "isDarkMode");
   const [isDarkMode, setIsDarkMode] = useLocalStorageState(
     window.matchMedia("(prefers-color-scheme:dark)").matches,
     "isDarkMode"

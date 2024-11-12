@@ -92,7 +92,6 @@ function BookingRow({
   const guestName = guests?.fullName || t("Unknown guest");
   const email = guests?.email || t("No email provided");
   const cabinName = cabins?.name || t("Unknown cabin");
-  // console.log(startDate);
   const smallScreenStartDate = startDate?.slice(0, 10);
   const smallScreenEndDate = endDate?.slice(0, 10);
   const isSmallScreen = useMediaQuery("(max-width:48em)");

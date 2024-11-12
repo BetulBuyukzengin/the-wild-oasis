@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-// import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
-// import { getCabins } from "../../services/apiCabins";
 import Spinner from "../../ui/Spinner";
 import CabinRow from "./CabinRow";
 import { useCabins } from "./useCabins";
@@ -50,13 +48,8 @@ function CabinTable() {
           <div></div>
         </Table.Header>
 
-        {/* {cabins.map((cabin) => (
-        <CabinRow cabin={cabin} key={cabin.id} />
-      ))} */}
         {/* ! Apply render props pattern */}
         <Table.Body
-          // data={cabins}
-          // data={filteredCabins}
           data={sortedCabins}
           render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
         />

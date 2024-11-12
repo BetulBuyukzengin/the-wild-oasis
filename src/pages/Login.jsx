@@ -1,3 +1,4 @@
+import { useMediaQuery } from "usehooks-ts";
 import LoginForm from "../features/authentication/LoginForm";
 import Heading from "../ui/Heading";
 import Logo from "../ui/Logo";
@@ -12,13 +13,17 @@ const LoginLayout = styled.main`
   justify-content: center;
   gap: 3.2rem;
   background-color: var(--color-grey-50);
+  @media (max-width: 48em) {
+    grid-template-columns: 28rem;
+  }
 `;
 
 function Login() {
+  const isSmallScreen = useMediaQuery("(max-width:48em)");
   return (
     <LoginLayout>
       <Logo />
-      <Heading as="h2">Log in to your account</Heading>
+      <Heading as={isSmallScreen ? "h3" : "h2"}>Log in to your account</Heading>
       <LoginForm />
     </LoginLayout>
   );

@@ -19,9 +19,6 @@ const StyledSidebar = styled.aside`
   flex-direction: column;
 `;
 function SideBar({ isOpen, setOpen, toggleDrawer }) {
-  // const [isOpen, setOpen] = useState(false);
-  // const toggleDrawer = () => setOpen((open) => !open);
-  // const isSmallScreen = useMediaQuery("(max-width:48em)");
   const isSmallScreen = useMediaQuery("(max-width:84.37em)");
 
   return (

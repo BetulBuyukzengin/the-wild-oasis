@@ -1,6 +1,6 @@
 # THE WILD OASIS
 
-## Canlı versiyon : <a href="https://wild-oasis-react-js.netlify.app">BEKA BANKIST</a>
+## Canlı versiyon : <a href="https://wild-oasis-react-js.netlify.app">THE WILD OASIS</a>
 
 - React.JS Vite ile oluşturduğum bu web uygulaması bungalov tarzı konaklama firmasına ait müşterilerinin kiralama durumlarını kontrol edebilecekleri, aynı zamanda bungalov evlerine kabin ismi, kaç kişi oldukları ve fiyat bilgisi ekleyebilecekleri bir uygulamadır.
 
@@ -19,5 +19,5 @@
 
 ### Uygulamaya giriş yapabilmek için gerekli bilgiler:
 
-Kullanıcı email: betul@gmail.com
-Kullanıcı şifre: betul123
+- Kullanıcı email: betul@gmail.com
+- Kullanıcı şifre: betul123

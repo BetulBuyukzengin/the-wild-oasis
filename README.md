@@ -19,5 +19,5 @@
 
 ### Uygulamaya giriş yapabilmek için gerekli bilgiler:
 
-Kullanıcı email:betul@gmail.com
+Kullanıcı email: betul@gmail.com
 Kullanıcı şifre: betul123

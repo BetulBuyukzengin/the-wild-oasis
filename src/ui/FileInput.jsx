@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import i18n from "../i18n.js";
 
 const HiddenFileInput = styled.input.attrs({ type: "file" })`
   display: none;

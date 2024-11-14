@@ -7,7 +7,6 @@ const StyledFormRow = styled.div`
   align-items: center;
   grid-template-columns: 24rem 1fr 1.2fr;
   gap: 2.4rem;
-
   padding: 1.2rem 0;
 
   &:first-child {
@@ -29,7 +28,6 @@ const StyledFormRow = styled.div`
   }
   @media (max-width: 48em) {
     gap: 1rem;
-
     grid-template-columns: ${(props) =>
       props.updateHotel ? "9rem 1fr 1.2fr" : "1fr "};
     justify-content: ${(props) =>

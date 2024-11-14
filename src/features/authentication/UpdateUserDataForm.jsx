@@ -20,7 +20,7 @@ function UpdateUserDataForm() {
   } = useUser();
 
   const { isUpdating, updateUser } = useUpdateUser();
-  const [fileName, setFileName] = useState("No file choose");
+  const [fileName, setFileName] = useState(false);
   const [fullName, setFullName] = useState(currentFullName);
   const [avatar, setAvatar] = useState(null);
   const { t } = useTranslation();
@@ -33,7 +33,7 @@ function UpdateUserDataForm() {
         onSuccess: () => {
           setAvatar(null);
           e.target.reset();
-          setFileName("No file choose");
+          setFileName(false);
         },
       }
     );

@@ -46,15 +46,9 @@ const FileInput = ({
   setFileName,
 }) => {
   const { t } = useTranslation();
-  const translatedFileStatus = t(`fileStatus.${fileName}`);
-  const statusTr = t("{{fileName}}", {
-    fileName: translatedFileStatus,
-  });
-  const statusEn = t("{{fileName}}", { fileName });
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setFileName(file ? file.name : null);
+    setFileName(file ? file.name : false);
     onChange && onChange(e);
   };
 
@@ -69,7 +63,7 @@ const FileInput = ({
       <CustomFileInputLabel htmlFor={id}>
         {t("Choose file")}
       </CustomFileInputLabel>
-      <FileName>{i18n.language === "tr" ? statusTr : statusEn}</FileName>
+      <FileName>{fileName ? fileName : t("No file chosen")}</FileName>
     </>
   );
 };

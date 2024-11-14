@@ -123,7 +123,6 @@ const resources = {
       "Want to add breakfast for": "",
       Observations: "",
       "nights in Cabin": "gece - bungalov",
-      "No file choose": "Dosya seçilmedi",
       "Choose file": "Dosya Seç",
       "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.":
         "Bu {{resourceName}} kaynağını kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
@@ -132,10 +131,7 @@ const resources = {
         cabins: "Bungalov",
         bookings: "Rezervasyon",
       },
-      "{{fileName}}": "{{fileName}}",
-      fileStatus: {
-        "No file choose": "Dosya seçilmedi",
-      },
+
       "{{status}}": "{{status}}",
       statusNames: {
         "checked-out": "Kontrol edildi",

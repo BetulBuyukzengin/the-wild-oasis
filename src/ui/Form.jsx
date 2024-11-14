@@ -15,7 +15,6 @@ const Form = styled.form`
       border: 1px solid var(--color-grey-100);
       border-radius: var(--border-radius-md);
       @media (max-width: 48em) {
-        /* width: 27rem; */
         padding: 2.4rem 1rem;
         grid-template-columns: 1fr;
         display: grid;

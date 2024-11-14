@@ -21,3 +21,6 @@
 
 - Kullanıcı email: betul@gmail.com
 - Kullanıcı şifre: betul123
+
+https://github.com/user-attachments/assets/04d47230-9c6f-4a33-adeb-58e2da23654b
+

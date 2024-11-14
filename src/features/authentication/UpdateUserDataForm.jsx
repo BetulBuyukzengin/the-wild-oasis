@@ -20,7 +20,7 @@ function UpdateUserDataForm() {
   } = useUser();
 
   const { isUpdating, updateUser } = useUpdateUser();
-
+  const [fileName, setFileName] = useState("No file choose");
   const [fullName, setFullName] = useState(currentFullName);
   const [avatar, setAvatar] = useState(null);
   const { t } = useTranslation();
@@ -33,6 +33,7 @@ function UpdateUserDataForm() {
         onSuccess: () => {
           setAvatar(null);
           e.target.reset();
+          setFileName("No file choose");
         },
       }
     );
@@ -60,6 +61,8 @@ function UpdateUserDataForm() {
           id="avatar"
           accept="image/*"
           disabled={isUpdating}
+          fileName={fileName}
+          setFileName={setFileName}
           onChange={(e) => setAvatar(e.target.files[0])}
         />
       </FormRow>

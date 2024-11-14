@@ -48,8 +48,7 @@ function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
     "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.",
     {
       resourceName: translatedResourceName,
-    },
-    { resourceName }
+    }
   );
   const worningEn = t(
     "Are you sure you want to delete this {{resourceName}} permanently? This action cannot be undone.",

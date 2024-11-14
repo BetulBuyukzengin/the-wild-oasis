@@ -15,6 +15,7 @@ const LoginLayout = styled.main`
   background-color: var(--color-grey-50);
   @media (max-width: 48em) {
     grid-template-columns: 28rem;
+    gap: 1rem;
   }
 `;
 

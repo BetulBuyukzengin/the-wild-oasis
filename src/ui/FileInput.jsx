@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import i18n from "../i18n.js";
 
@@ -38,9 +37,15 @@ const FileName = styled.span`
   }
 `;
 
-const FileInput = ({ id, accept, disabled, onChange }) => {
+const FileInput = ({
+  id,
+  accept,
+  disabled,
+  onChange,
+  fileName,
+  setFileName,
+}) => {
   const { t } = useTranslation();
-  const [fileName, setFileName] = useState("No file choose");
   const translatedFileStatus = t(`fileStatus.${fileName}`);
   const statusTr = t("{{fileName}}", {
     fileName: translatedFileStatus,
@@ -49,7 +54,7 @@ const FileInput = ({ id, accept, disabled, onChange }) => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setFileName(file);
+    setFileName(file ? file.name : null);
     onChange && onChange(e);
   };
 

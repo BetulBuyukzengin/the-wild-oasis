@@ -129,8 +129,8 @@ const resources = {
         "Bu {{resourceName}} kaynağını kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
       "Delete {{resourceName}}": "{{resourceName}} Sil",
       resourceNames: {
-        cabin: "Bungalov",
-        booking: "Rezervasyon",
+        cabins: "Bungalov",
+        bookings: "Rezervasyon",
       },
       "{{fileName}}": "{{fileName}}",
       fileStatus: {
@@ -183,7 +183,7 @@ export const getDateLocale = () => {
 i18n.use(initReactI18next).init({
   resources,
   lng: "en",
-  fallbackLng: "en", 
+  fallbackLng: "en",
   interpolation: {
     escapeValue: false,
   },

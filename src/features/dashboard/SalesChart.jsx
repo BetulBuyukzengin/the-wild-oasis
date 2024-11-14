@@ -75,7 +75,11 @@ function SalesChart({ bookings, numDays }) {
         })}
       </Heading>
 
-      <ResponsiveContainer width="100%" height={isSmallScreen ? 200 : 250}>
+      <ResponsiveContainer
+        width="100%"
+        height={isSmallScreen ? 200 : 250}
+        style={{ fontSize: isSmallScreen ? "1.2rem" : "1.6rem" }}
+      >
         <AreaChart data={data}>
           <XAxis
             dataKey="label"

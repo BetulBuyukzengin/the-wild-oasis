@@ -5,7 +5,6 @@ import "react-modern-drawer/dist/index.css";
 import styled from "styled-components";
 
 const StyledSpan = styled.span`
-  /* position: relative; */
   background-color: var(--color-grey-0);
   padding: 0.4rem;
   border-bottom: 1px solid var(--color-grey-100);
